@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        <main className="flex-1 px-20 py-10 bg-white">{children}</main>
+        <main className="px-20 py-10 bg-white">{children}</main>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { CalendarDots } from "@phosphor-icons/react";
 import { CurrencyCircleDollar } from "@phosphor-icons/react";
 import { ChefHat } from "@phosphor-icons/react";
 
-export const SalesSummary = () => {
+const SalesSummary = () => {
   return (
     <section className=" p-10 bg-solidWhite rounded-lg shadow-lg">
       <h2>Sales Summary</h2>
@@ -57,3 +57,5 @@ export const SalesSummary = () => {
     </section>
   );
 };
+
+export default SalesSummary;
