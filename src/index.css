@@ -15,9 +15,13 @@ input {
 button {
   width: 15.625rem;
   height: 4.375rem;
-  background-color: white;
+  background-color: #f4f5fc;
   color: black;
   font-size: 1.125rem;
   border-radius: 10px;
-  color: darkgray;
+}
+
+li {
+  color: #4c4c4c;
+  font-size: 1.125rem;
 }
