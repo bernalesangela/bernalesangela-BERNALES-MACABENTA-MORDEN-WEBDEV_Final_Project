@@ -2,7 +2,16 @@
 export default {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        black: "#000000",
+        white: "#ffffff",
+        darkGray: "#757575",
+        lightGray: "#D9D9D9",
+        lightBlue: "#4A78CE",
+        red: "#FF0000",
+      },
+    },
   },
   plugins: [],
 };
