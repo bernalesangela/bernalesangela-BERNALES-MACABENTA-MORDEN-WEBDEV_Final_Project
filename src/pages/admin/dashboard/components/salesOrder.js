@@ -1,5 +1,6 @@
 import React from "react";
 import DropdownSelect from "../../../../components/ui/DropdownSelect";
+import { CaretRight } from "@phosphor-icons/react";
 
 const SalesOrder = () => {
   const handleSelection = (value) => {
@@ -7,19 +8,17 @@ const SalesOrder = () => {
   };
 
   return (
-    <section className=" p-10 bg-solidWhite rounded-lg shadow-lg h-full">
+    <section className="p-5 bg-solidWhite rounded-lg shadow-lg flex flex-col flex-1 ">
       <div className="w-full flex justify-between">
         <h2>Sales Order</h2>
         <DropdownSelect
-          //   label="Select an option"
           options={["Last 7 Days", "1 Month", "1 Year"]}
           onChange={handleSelection}
         />
       </div>
 
-      <div>
-        <table className="w-full">
-          {/* Table Head */}
+      <div className="flex-1 overflow-auto">
+        <table className="w-full border-collapse">
           <thead className="bg-gray-100">
             <tr>
               <th className="px-4 py-2 text-left">Order ID</th>
@@ -31,37 +30,25 @@ const SalesOrder = () => {
             </tr>
           </thead>
 
-          {/* Table Body */}
           <tbody>
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2">#00000</td>
-              <td className="px-4 py-2">#00000</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-            </tr>
-
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2">#00000</td>
-              <td className="px-4 py-2">#00000</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-            </tr>
-
-            <tr className="hover:bg-gray-50">
-              <td className="px-4 py-2">#00000</td>
-              <td className="px-4 py-2">#00000</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-              <td className="px-4 py-2">32</td>
-            </tr>
+            {[...Array(3)].map((_, i) => (
+              <tr key={i} className="hover:bg-gray-50">
+                <td className="px-4 py-2">#00000</td>
+                <td className="px-4 py-2">#00000</td>
+                <td className="px-4 py-2">32</td>
+                <td className="px-4 py-2">32</td>
+                <td className="px-4 py-2">32</td>
+                <td className="px-4 py-2">32</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
+
+      <button className="mt-4 self-end flex items-center justify-center ">
+        See more
+        <CaretRight size={30} weight="light" />
+      </button>
     </section>
   );
 };
