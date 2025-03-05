@@ -18,6 +18,16 @@ input {
   font-size: 1.125rem;
 }
 
+select {
+  width: 32.375rem;
+  height: 2.938rem;
+  border: 1px #d9d9d9 solid;
+  border-radius: 0.625rem;
+  background-color: white;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
 button {
   width: 15.625rem;
   height: 4.375rem;
