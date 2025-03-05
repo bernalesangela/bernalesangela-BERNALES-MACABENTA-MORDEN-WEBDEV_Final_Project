@@ -123,7 +123,7 @@ const CreateOrder = () => {
 
             {/* Checkout Button Aligned to Bottom */}
             <div className="mt-auto flex justify-center">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600">
+              <button className=" text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600">
                 Checkout
               </button>
             </div>

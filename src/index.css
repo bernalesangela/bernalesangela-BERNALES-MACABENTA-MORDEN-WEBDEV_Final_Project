@@ -74,3 +74,8 @@ h6 {
   font-weight: medium;
   color: #777;
 }
+
+label {
+  color: #4c4c4c;
+  font-weight: bold;
+}
