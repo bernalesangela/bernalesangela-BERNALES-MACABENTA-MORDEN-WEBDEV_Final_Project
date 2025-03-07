@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../layout";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { ItemCard } from "./components/itemCard";
 import Separator from "../../../components/ui/Separator";
 
 const CreateOrder = () => {
+  const [discount, setDiscount] = useState(0);
+  const [amountPaid, setAmoutPaid] = useState(0);
   return (
     <Layout>
       <section className="h-full flex flex-col">
@@ -103,20 +105,39 @@ const CreateOrder = () => {
             <div className="flex flex-col gap-2">
               <div className="flex w-full justify-between px-2 py-2 items-center">
                 <label className="font-semibold">Discount</label>
-                <input className="w-[10rem]" />
+                <input
+                  className="w-[10rem]"
+                  value={discount}
+                  onChange={(e) => setDiscount(e.target.value)}
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(
+                      /[^0-9]/g,
+                      ""
+                    );
+                  }}
+                />
               </div>
 
               <div className="flex w-full justify-between px-2 py-2 items-center">
                 <label className="font-semibold">Amount Paid</label>
-                <input className="w-[10rem]" />
+                <input
+                  className="w-[10rem]"
+                  value={amountPaid}
+                  onChange={(e) => setAmoutPaid(e.target.value)}
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(
+                      /[^0-9]/g,
+                      ""
+                    );
+                  }}
+                />
               </div>
 
               <div className="flex w-full justify-between px-2 py-2 items-center">
                 <label className="font-semibold">Mode of Payment</label>
                 <select className="w-[10rem]">
-                  <option>1</option>
-                  <option>1</option>
-                  <option>1</option>
+                  <option>Cash</option>
+                  <option>Digital Wallet</option>
                 </select>
               </div>
             </div>
