@@ -108,11 +108,6 @@ const InventoryPage = () => {
               </span>
             </div>
           </div>
-          <div className="flex items-center w-full gap-3">
-            <div className="bg-blueSerenity border border-blueSerenity  w-[3rem] h-[3rem] items-center justify-center flex rounded-lg hover:cursor-pointer">
-              <span className="text-white">1</span>
-            </div>
-          </div>
         </div>
       </section>
     </Layout>
