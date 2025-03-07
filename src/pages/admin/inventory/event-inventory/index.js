@@ -242,7 +242,7 @@ const EventInventoryPage = () => {
           <div className="w-full bg-solidWhite flex items-center justify-between p-5 rounded-t-lg">
             <div className="w-[24rem] flex items-center justify-between mb-4">
               <span
-                className={`font-semibold cursor-pointer pb-1 transition-all ${
+                className={`font-semibold cursor-pointer pb-1 transition-all hover:scale-110 ${
                   !stockToggle
                     ? "border-b-2 border-blueSerenity scale-110"
                     : "text-gray-500"
@@ -253,7 +253,7 @@ const EventInventoryPage = () => {
               </span>
 
               <span
-                className={`font-semibold cursor-pointer pb-1 transition-all ${
+                className={`font-semibold cursor-pointer pb-1 transition-all hover:scale-110 ${
                   stockToggle
                     ? "border-b-2 border-blueSerenity scale-110"
                     : "text-gray-500"
@@ -268,7 +268,7 @@ const EventInventoryPage = () => {
               <MagnifyingGlass size={24} className="absolute left-4" />
               <input
                 type="text"
-                className="w-full pl-12 pr-4 py-2 border border-gray-300 rounded-md text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-12 pr-4 py-2 border border-lightGray rounded-md text-black placeholder-darkGray focus:outline-none focus:ring-2 focus:ring-blueSerenity text-left"
                 placeholder="Search by name or product number"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -306,7 +306,7 @@ const EventInventoryPage = () => {
                     index % 2 === 0 ? "bg-gray-100" : "bg-white"
                   }`}
                 >
-                  <div className="w-full grid grid-cols-6 text-lg text-gray-700">
+                  <div className="w-full grid grid-cols-6 text-lg text-darkerGray">
                     <span>{item.ProductName}</span>
                     <span>{item.NumberOfStocks}</span>
                     <span>{item.AvailabilityStocks}</span>
@@ -322,7 +322,7 @@ const EventInventoryPage = () => {
                 </div>
               ))
             ) : (
-              <div className="text-center py-5 text-gray-500">
+              <div className="text-center py-5 text-darkGray">
                 No results found
               </div>
             )}
