@@ -8,6 +8,7 @@ export default {
 
         white: "#ffffff",
         solidWhite: "#F4F5FC",
+        whiteStoic: "#DEE1FF",
 
         darkGray: "#757575",
         lightGray: "#D9D9D9",
@@ -19,6 +20,11 @@ export default {
         arcLight: "#CDDEFF",
         blueLight: "#4A78CE",
         blueSerenity: "#4E76CD",
+        blueTranquil: "#8EDEFF",
+
+        goldenYellow: "#FFDA6A",
+
+        greenLight: "#B1E9BA",
       },
     },
   },
