@@ -11,10 +11,12 @@ const SalesOrder = () => {
     <section className="p-5 bg-solidWhite rounded-lg shadow-lg flex flex-col flex-1 ">
       <div className="w-full flex justify-between">
         <h2>Sales Order</h2>
-        <DropdownSelect
-          options={["Last 7 Days", "1 Month", "1 Year"]}
-          onChange={handleSelection}
-        />
+
+        <select className="text-left pl-3 bg-transparent ">
+          <option>Last 7 Days</option>
+          <option>1 Month</option>
+          <option>1 Year</option>
+        </select>
       </div>
 
       <div className="flex-1 overflow-auto">
