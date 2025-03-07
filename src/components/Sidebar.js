@@ -1,32 +1,80 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../pages/login/logo.svg";
-import { ChartBar, Invoice, Package, UsersThree, CashRegister, ClockCounterClockwise, Cookie, Gear, Info, SignOut } from "@phosphor-icons/react";
+import {
+  ChartBar,
+  Invoice,
+  Package,
+  UsersThree,
+  CashRegister,
+  ClockCounterClockwise,
+  Cookie,
+  Gear,
+  Info,
+  SignOut,
+} from "@phosphor-icons/react";
 
 const Sidebar = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/login"); 
+    navigate("/login");
   };
 
   const sidebarContent = {
     main: {
-      dashboard: { text: "Dashboard", redirect: "/admin/dashboard", icon: <ChartBar size={30} weight="light" /> },
-      createOrder: { text: "Create Order", redirect: "/admin/create-order", icon: <Invoice size={30} weight="light" /> },
+      dashboard: {
+        text: "Dashboard",
+        redirect: "/admin/dashboard",
+        icon: <ChartBar size={30} weight="light" />,
+      },
+      createOrder: {
+        text: "Create Order",
+        redirect: "/admin/create-order",
+        icon: <Invoice size={30} weight="light" />,
+      },
     },
     records: {
-      products: { text: "Products", redirect: "/admin/products", icon: <Cookie size={30} weight="light" /> },
-      transactions: { text: "Transactions", redirect: "/admin/customers", icon: <UsersThree size={30} weight="light" /> },
-      inventory: { text: "Inventory", redirect: "/admin/inventory", icon: <Package size={30} weight="light" /> },
-      salesTracking: { text: "Sales Tracking", redirect: "/admin/employees", icon: <CashRegister size={30} weight="light" /> },
-      history: { text: "History", redirect: "/admin/history", icon: <ClockCounterClockwise size={30} weight="light" /> },
+      products: {
+        text: "Products",
+        redirect: "/admin/products",
+        icon: <Cookie size={30} weight="light" />,
+      },
+      transactions: {
+        text: "Transactions",
+        redirect: "/admin/customers",
+        icon: <UsersThree size={30} weight="light" />,
+      },
+      inventory: {
+        text: "Inventory",
+        redirect: "/admin/inventory",
+        icon: <Package size={30} weight="light" />,
+      },
+      salesTracking: {
+        text: "Sales Tracking",
+        redirect: "/admin/sales-tracking",
+        icon: <CashRegister size={30} weight="light" />,
+      },
+      // history: { text: "History", redirect: "/admin/history", icon: <ClockCounterClockwise size={30} weight="light" /> },
     },
     controls: {
-      settings: { text: "Settings", redirect: "", icon: <Gear size={25} weight="light" /> },
-      about: { text: "About", redirect: "", icon: <Info size={25} weight="light" /> },
-      logout: { text: "Logout", redirect: "", icon: <SignOut size={25} weight="light" />, action: handleLogout },
+      settings: {
+        text: "Settings",
+        redirect: "",
+        icon: <Gear size={25} weight="light" />,
+      },
+      about: {
+        text: "About",
+        redirect: "",
+        icon: <Info size={25} weight="light" />,
+      },
+      logout: {
+        text: "Logout",
+        redirect: "",
+        icon: <SignOut size={25} weight="light" />,
+        action: handleLogout,
+      },
     },
   };
 
@@ -42,7 +90,9 @@ const Sidebar = () => {
             <div
               key={key}
               onClick={() => navigate(value.redirect)}
-              className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${selectedItem === key ? "bg-gray-300 text-black font-bold" : ""}`}
+              className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${
+                selectedItem === key ? "bg-gray-300 text-black font-bold" : ""
+              }`}
             >
               {value.icon}
               <span className="pl-3 text-lg">{value.text}</span>
@@ -55,7 +105,9 @@ const Sidebar = () => {
             <div
               key={key}
               onClick={() => navigate(value.redirect)}
-              className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${selectedItem === key ? "bg-gray-300 text-black font-bold" : ""}`}
+              className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${
+                selectedItem === key ? "bg-gray-300 text-black font-bold" : ""
+              }`}
             >
               {value.icon}
               <span className="pl-3 text-lg">{value.text}</span>

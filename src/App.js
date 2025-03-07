@@ -11,6 +11,7 @@ import NewProduct from "./pages/admin/products/new-product";
 import InventoryPage from "./pages/admin/inventory";
 import { LoginPage } from "./pages/login";
 import EventInventoryPage from "./pages/admin/inventory/event-inventory";
+import SalesTrackingPage from "./pages/admin/sales-tracking";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           element={<EventInventoryPage />}
         />
         <Route path="/admin/products/new-product" element={<NewProduct />} />
+        <Route path="/admin/sales-tracking" element={<SalesTrackingPage />} />
         <Route path="/login/" element={<LoginPage />} />
       </Routes>
     </Router>
