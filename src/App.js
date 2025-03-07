@@ -10,6 +10,7 @@ import ProductsPage from "./pages/admin/products";
 import NewProduct from "./pages/admin/products/new-product";
 import InventoryPage from "./pages/admin/inventory";
 import { LoginPage } from "./pages/login";
+import EventInventoryPage from "./pages/admin/inventory/event-inventory";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/admin/create-order" element={<CreateOrder />} />
         <Route path="/admin/products" element={<ProductsPage />} />
         <Route path="/admin/inventory" element={<InventoryPage />} />
+        <Route
+          path="/admin/inventory/event-inventory"
+          element={<EventInventoryPage />}
+        />
         <Route path="/admin/products/new-product" element={<NewProduct />} />
         <Route path="/login/" element={<LoginPage />} />
       </Routes>
