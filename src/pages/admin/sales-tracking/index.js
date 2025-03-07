@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../layout";
 import { CaretRight, MagnifyingGlass } from "@phosphor-icons/react";
 
 const SalesTrackingPage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   const sales = [
     {
       id: 1,
@@ -165,7 +167,11 @@ const SalesTrackingPage = () => {
       totalIncome: 300000,
     },
   ];
-
+  const filteredSales = sales.filter(
+    (sale) =>
+      sale.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      sale.id.toString().includes(searchQuery)
+  );
   return (
     <Layout>
       <section className="h-full flex flex-col">
@@ -178,6 +184,8 @@ const SalesTrackingPage = () => {
             <input
               className=" text-left pl-14"
               placeholder="Search by name or product number"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <MagnifyingGlass size={32} className="absolute ml-3" />
           </div>
@@ -209,20 +217,24 @@ const SalesTrackingPage = () => {
           </div>
 
           <div className="w-full h-full overflow-y-scroll flex flex-col gap-3">
-            {sales.map((sale, index) => (
-              <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
-                <span className="text-darkGray">#{sale.id}</span>
-                <span>{sale.productName}</span>
-                <span>P {sale.price.toFixed(2)}</span>
-                <span>P {sale.totalSales.toFixed(2)}</span>
-                <span>P {sale.totalIncome.toFixed(2)}</span>
+            {filteredSales.length > 0 ? (
+              filteredSales.map((sale) => (
+                <div
+                  key={sale.id}
+                  className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center"
+                >
+                  <span className="text-darkGray">#{sale.id}</span>
+                  <span>{sale.productName}</span>
+                  <span>P {sale.price.toFixed(2)}</span>
+                  <span>{sale.totalSales}</span>
+                  <span>P {sale.totalIncome.toFixed(2)}</span>
+                </div>
+              ))
+            ) : (
+              <div className="text-center text-gray-500 py-5">
+                No matching results found.
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex items-center w-full gap-3">
-          <div className="bg-blueSerenity border border-blueSerenity  w-[3rem] h-[3rem] items-center justify-center flex rounded-lg hover:cursor-pointer">
-            <span className="text-white">1</span>
+            )}
           </div>
         </div>
       </section>
