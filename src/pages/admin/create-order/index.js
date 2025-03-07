@@ -7,12 +7,87 @@ import Separator from "../../../components/ui/Separator";
 const CreateOrder = () => {
   const [discount, setDiscount] = useState(0);
   const [amountPaid, setAmoutPaid] = useState(0);
+
+  const data = {
+    products: [
+      { ProductID: 1, ProductName: "Biscoff Cheesecake", CategoryID: 1 },
+      { ProductID: 2, ProductName: "Funfetti", CategoryID: 1 },
+      { ProductID: 3, ProductName: "Matcha with Cream Cheese", CategoryID: 1 },
+      { ProductID: 4, ProductName: "Nutella Blast", CategoryID: 1 },
+      { ProductID: 5, ProductName: "Oreo Cheesecake", CategoryID: 1 },
+      { ProductID: 6, ProductName: "Rocky Road", CategoryID: 1 },
+      { ProductID: 7, ProductName: "Smores 2.0", CategoryID: 1 },
+      { ProductID: 8, ProductName: "Special Crinkles", CategoryID: 1 },
+      { ProductID: 9, ProductName: "Brownies", CategoryID: 2 },
+      { ProductID: 10, ProductName: "Butterscotch", CategoryID: 2 },
+      { ProductID: 11, ProductName: "Revel Bars", CategoryID: 2 },
+      { ProductID: 12, ProductName: "Red Velvet Cheesecake", CategoryID: 2 },
+      { ProductID: 13, ProductName: "Ham and Cheese Empanada", CategoryID: 3 },
+      {
+        ProductID: 14,
+        ProductName: "Small - Korean Cream Cheese Garlic Bread",
+        CategoryID: 3,
+      },
+      {
+        ProductID: 15,
+        ProductName: "Medium - Korean Cream Cheese Garlic Bread",
+        CategoryID: 3,
+      },
+      {
+        ProductID: 16,
+        ProductName: "Large - Korean Cream Cheese Garlic Bread",
+        CategoryID: 3,
+      },
+    ],
+  };
+
+  const images = {
+    products: [
+      {
+        id: 1,
+        img: "/products/BiscoffCheesecake.jpg",
+      },
+      {
+        id: 2,
+        img: "/products/Funfetti.jpg",
+      },
+      {
+        id: 1,
+        img: "/products/CookieMonster.jpg",
+      },
+      {
+        id: 3,
+        img: "/products/HamandCheeseEmpanada.jpg",
+      },
+      {
+        id: 4,
+        img: "/products/KoreanCreamCheeseGarlicBread.jpg",
+      },
+      {
+        id: 0,
+        img: "/products/KoreanCreamCheeseGarlicBread. jpg",
+      },
+      {
+        id: 3,
+        img: "/products/MatchawithCreamCheese.jpg",
+      },
+      {
+        id: 4,
+        img: "/products/NutellaBlast.jpg",
+      },
+      {
+        id: 6,
+        img: "/products/RockyRoad.jpg",
+      },
+    ],
+  };
+
   return (
     <Layout>
       <section className="h-full flex flex-col">
         <div className="w-full flex justify-between items-center">
           <h1 className="text-blueSerenity py-5">Hello, Angela</h1>
-          <div className="flex items-center pr-10 ">
+          <div className="flex items-center relative">
             <input
               className=" text-left pl-14"
               placeholder="Search by name or product number"
@@ -21,47 +96,71 @@ const CreateOrder = () => {
           </div>
         </div>
 
-        <div className="flex gap-8 h-full">
-          <div className="bg-solidWhite flex rounded-lg shadow-lg p-10 max-h-full h-full flex-col">
+        <div className="flex gap-8 h-full overflow-y-hidden">
+          <div className="bg-solidWhite flex rounded-lg shadow-lg p-5 max-h-full h-full flex-col overflow-y-scroll">
             {/* Cookies Section  */}
-            <div className="w-full ">
+            <div className="w-full">
               <h2>Cookies</h2>
-              <div className="flex gap-5 flex-wrap justify-between">
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
+              <div className="flex gap-5 flex-wrap ">
+                {data.products
+                  .filter((item) => item.CategoryID === 1)
+                  .map((item) => {
+                    const productImage =
+                      images.products.find((img) => img.id === item.ProductID)
+                        ?.img || "/products/default.jpg";
+
+                    return (
+                      <ItemCard
+                        key={item.ProductID}
+                        itemName={item.ProductName}
+                        img={productImage}
+                      />
+                    );
+                  })}
               </div>
             </div>
 
             {/* Cookies Section */}
             <div className="w-full">
               <h2>Bars</h2>
-              <div className="flex gap-5 flex-wrap justify-between">
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
+              <div className="flex gap-5 flex-wrap ">
+                {data.products
+                  .filter((item) => item.CategoryID === 2)
+                  .map((item) => {
+                    const productImage =
+                      images.products.find((img) => img.id === item.ProductID)
+                        ?.img || "/products/default.jpg";
+
+                    return (
+                      <ItemCard
+                        key={item.ProductID}
+                        itemName={item.ProductName}
+                        img={productImage}
+                      />
+                    );
+                  })}
               </div>
             </div>
 
             {/* Bread Section */}
             <div className="w-full">
               <h2>Bread</h2>
-              <div className="flex gap-5 flex-wrap justify-between">
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
-                <ItemCard itemName={"Biscoff Cheesecake"} />
+              <div className="flex gap-5 flex-wrap ">
+                {data.products
+                  .filter((item) => item.CategoryID === 3)
+                  .map((item) => {
+                    const productImage =
+                      images.products.find((img) => img.id === item.ProductID)
+                        ?.img || "/products/default.jpg";
+
+                    return (
+                      <ItemCard
+                        key={item.ProductID}
+                        itemName={item.ProductName}
+                        img={productImage}
+                      />
+                    );
+                  })}
               </div>
             </div>
           </div>
