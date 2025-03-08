@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../layout";
 import SalesSummary from "./components/salesSummary";
-import StockReport from "./components/stockReport";
+//import StockReport from "./components/stockReport";
 import SalesOrder from "./components/salesOrder";
 
 const Dashboard = () => {

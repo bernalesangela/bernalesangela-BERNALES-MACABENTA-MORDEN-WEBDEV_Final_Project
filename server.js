@@ -22,7 +22,8 @@ app.post('/api/login', (req, res) => {
       return;
     }
     if (results.length > 0) {
-      res.status(200).send('Login successful');
+      const user = results[0];
+      res.status(200).json({ username: user.EmployeeUsername });
     } else {
       res.status(401).send('Invalid username or password');
     }
