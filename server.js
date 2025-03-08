@@ -11,6 +11,24 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+// Define a route to handle login requests
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+  const query = 'SELECT * FROM employee WHERE EmployeeUsername = ? AND EmployeePassword = ?';
+  connection.query(query, [username, password], (err, results) => {
+    if (err) {
+      console.error('Error during login:', err);
+      res.status(500).send('Server error');
+      return;
+    }
+    if (results.length > 0) {
+      res.status(200).send('Login successful');
+    } else {
+      res.status(401).send('Invalid username or password');
+    }
+  });
+});
+
 // Define a route to get all products with category names
 app.get('/api/products', (req, res) => {
   const query = `
@@ -39,6 +57,35 @@ app.post('/api/products', (req, res) => {
       return;
     }
     res.status(201).send('Product added successfully');
+  });
+});
+
+// Define a route to update a product
+app.put('/api/products/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, price } = req.body;
+  const query = 'UPDATE products SET ProductName = ?, Price = ? WHERE ProductID = ?';
+  connection.query(query, [name, price, id], (err, results) => {
+    if (err) {
+      console.error('Error updating product:', err);
+      res.status(500).send('Server error');
+      return;
+    }
+    res.status(200).send('Product updated successfully');
+  });
+});
+
+// Define a route to delete a product
+app.delete('/api/products/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'DELETE FROM products WHERE ProductID = ?';
+  connection.query(query, [id], (err, results) => {
+    if (err) {
+      console.error('Error deleting product:', err);
+      res.status(500).send('Server error');
+      return;
+    }
+    res.status(200).send('Product deleted successfully');
   });
 });
 
