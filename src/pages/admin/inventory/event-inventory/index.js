@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Layout from "../../layout";
 import {
   CaretLeft,
@@ -9,6 +10,7 @@ import {
 const EventInventoryPage = () => {
   const [stockToggle, setStockToggle] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const stocks = {
     StockIn: [
@@ -192,7 +194,10 @@ const EventInventoryPage = () => {
     <Layout>
       <section className="h-full flex flex-col">
         <div className="w-full flex items-center gap-3">
-          <div className="bg-lightGray p-1 rounded-full hover:scale-110 transition-all duration-150 hover:cursor-pointer">
+          <div
+            className="bg-lightGray p-1 rounded-full hover:scale-110 transition-all duration-150 hover:cursor-pointer"
+            onClick={() => navigate('/admin/inventory')} // Add onClick handler
+          >
             <CaretLeft size={25} />
           </div>
           <h1 className="text-blueSerenity py-5">Event Inventory</h1>

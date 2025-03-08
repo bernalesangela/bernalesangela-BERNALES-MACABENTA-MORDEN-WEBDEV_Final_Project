@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Layout from "../layout";
 import { MagnifyingGlass, CaretRight, TrashSimple } from "@phosphor-icons/react";
 import AddEventModal from "./components/AddEventModal"; // Import the AddEventModal component
@@ -8,6 +9,7 @@ const InventoryPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [events, setEvents] = useState([]);
   const [eventToDelete, setEventToDelete] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const fetchEvents = async () => {
     try {
@@ -78,12 +80,19 @@ const InventoryPage = () => {
             <MagnifyingGlass size={32} className="absolute ml-3" />
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <button
               className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600"
               onClick={() => setIsModalOpen(true)}
             >
               Add new Event
+              <CaretRight size={20} />
+            </button>
+            <button
+              className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600"
+              onClick={() => navigate('/admin/inventory/event-inventory')}
+            >
+              Manage StockIn/StockOut
               <CaretRight size={20} />
             </button>
           </div>
@@ -123,9 +132,7 @@ const InventoryPage = () => {
                 <span>
                   <Badge id={event.EventTypeID} />
                 </span>
-                <span>
-                  <CaretRight size={25} />
-                </span>
+                <span></span>
                 <span>
                   <TrashSimple
                     size={25}
