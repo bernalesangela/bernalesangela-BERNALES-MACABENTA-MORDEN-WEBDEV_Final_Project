@@ -14,7 +14,7 @@ app.use(express.json());
 // Define a route to handle login requests
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  const query = 'SELECT * FROM employee WHERE EmployeeUsername = ? AND EmployeePassword = ?';
+  const query = 'SELECT EmployeeUsername FROM employee WHERE EmployeeUsername = ? AND EmployeePassword = ?';
   connection.query(query, [username, password], (err, results) => {
     if (err) {
       console.error('Error during login:', err);
@@ -23,7 +23,7 @@ app.post('/api/login', (req, res) => {
     }
     if (results.length > 0) {
       const user = results[0];
-      res.status(200).json({ username: user.EmployeeUsername });
+      res.status(200).json({ username: user.EmployeeUsername, fullName: user.EmployeeUsername });
     } else {
       res.status(401).send('Invalid username or password');
     }

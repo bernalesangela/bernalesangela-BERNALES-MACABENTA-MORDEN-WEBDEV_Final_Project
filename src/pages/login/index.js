@@ -18,7 +18,10 @@ export const LoginPage = () => {
       });
 
       if (response.ok) {
+        const data = await response.json();
         console.log("Login successful");
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('fullName', data.fullName);
         window.location.href = "/admin/dashboard";
       } else {
         const errorMessage = await response.text();

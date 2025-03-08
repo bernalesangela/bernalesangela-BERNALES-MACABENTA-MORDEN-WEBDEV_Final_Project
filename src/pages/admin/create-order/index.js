@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../layout";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { ItemCard } from "./components/itemCard";
@@ -7,6 +7,14 @@ import Separator from "../../../components/ui/Separator";
 const CreateOrder = () => {
   const [discount, setDiscount] = useState(0);
   const [amountPaid, setAmoutPaid] = useState(0);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   const data = {
     products: [
@@ -86,7 +94,7 @@ const CreateOrder = () => {
     <Layout>
       <section className="h-full flex flex-col">
         <div className="w-full flex justify-between items-center">
-          <h1 className="text-blueSerenity py-5">Hello, Angela</h1>
+          <h1 className="text-blueSerenity py-5">Hello, {username}</h1>
           <div className="flex items-center relative">
             <input
               className=" text-left pl-14"
