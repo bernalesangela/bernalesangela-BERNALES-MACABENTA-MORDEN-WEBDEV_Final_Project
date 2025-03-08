@@ -1,10 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../layout";
-import { Car, MagnifyingGlass } from "@phosphor-icons/react";
-import { CaretRight } from "@phosphor-icons/react";
-import { Badge } from "./components/badge";
+import { MagnifyingGlass, CaretRight, TrashSimple } from "@phosphor-icons/react";
+import AddEventModal from "./components/AddEventModal"; // Import the AddEventModal component
+import { Badge } from "./components/badge"; // Import the Badge component
 
 const InventoryPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [eventToDelete, setEventToDelete] = useState(null);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/events");
+      const data = await response.json();
+      setEvents(data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const handleAddEvent = async (newEvent) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEvent),
+      });
+
+      if (response.ok) {
+        fetchEvents();
+        setIsModalOpen(false);
+      } else {
+        console.error("Error adding event:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error adding event:", error);
+    }
+  };
+
+  const handleDeleteEvent = async () => {
+    if (!eventToDelete) return;
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/events/${eventToDelete.EventID}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        fetchEvents();
+        setEventToDelete(null);
+      } else {
+        console.error("Error deleting event:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting event:", error);
+    }
+  };
+
   return (
     <Layout>
       <section className="h-full flex flex-col">
@@ -14,24 +72,27 @@ const InventoryPage = () => {
         <div className="flex items-center w-full justify-between">
           <div className="flex items-center relative">
             <input
-              className=" text-left pl-14"
+              className="text-left pl-14"
               placeholder="Search by name or product number"
             />
             <MagnifyingGlass size={32} className="absolute ml-3" />
           </div>
 
           <div className="flex items-center">
-            <button className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600">
-              Create new Product
+            <button
+              className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Add new Event
               <CaretRight size={20} />
             </button>
           </div>
         </div>
 
         <div className="px-10 max-h-full h-full overflow-x-auto gap-3 flex flex-col">
-          <div className=" w-full rounded-lg p-5 grid grid-cols-6 items-center">
+          <div className="w-full rounded-lg p-5 grid grid-cols-7 items-center">
             <span className="font-semibold text-darkGray text-left">
-              Event name
+              Event Title
             </span>
             <span className="font-semibold text-darkGray text-left">
               Schedule ID
@@ -46,70 +107,66 @@ const InventoryPage = () => {
               Event Type
             </span>
             <span></span>
+            <span></span>
           </div>
-          {/* 
-          badge ids
-          1 = School Event
-          2 = Social Event
-          3 = Workshop
-          4 = Others
 
-          pass lang event_type_id diri if
-          */}
           <div className="w-full h-full overflow-y-scroll flex flex-col gap-3">
-            <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
-              <span>Event Name</span>
-              <span>#000000</span>
-              <span>01/01/25</span>
-              <span>01/01/25</span>
-              <span>
-                <Badge id={1} />
-              </span>
-              <span>
-                <CaretRight size={25} />
-              </span>
-            </div>
-            <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
-              <span>Event Name</span>
-              <span>#000000</span>
-              <span>01/01/25</span>
-              <span>01/01/25</span>
-              <span>
-                <Badge id={2} />
-              </span>
-              <span>
-                <CaretRight size={25} />
-              </span>
-            </div>
-
-            <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
-              <span>Event Name</span>
-              <span>#000000</span>
-              <span>01/01/25</span>
-              <span>01/01/25</span>
-              <span>
-                <Badge id={3} />
-              </span>
-              <span>
-                <CaretRight size={25} />
-              </span>
-            </div>
-
-            <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
-              <span>Event Name</span>
-              <span>#000000</span>
-              <span>01/01/25</span>
-              <span>01/01/25</span>
-              <span>
-                <Badge id={4} />
-              </span>
-              <span>
-                <CaretRight size={25} />
-              </span>
-            </div>
+            {events.map((event) => (
+              <div
+                className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-7 items-center"
+                key={event.EventID}
+              >
+                <span>{event.EventTitle}</span>
+                <span>{event.ScheduleID}</span>
+                <span>{event.ScheduleStartDate}</span>
+                <span>{event.ScheduleEndDate}</span>
+                <span>
+                  <Badge id={event.EventTypeID} />
+                </span>
+                <span>
+                  <CaretRight size={25} />
+                </span>
+                <span>
+                  <TrashSimple
+                    size={25}
+                    className="cursor-pointer"
+                    onClick={() => setEventToDelete(event)}
+                  />
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+      {isModalOpen && (
+        <AddEventModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSave={handleAddEvent}
+        />
+      )}
+      {eventToDelete && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-5 rounded-lg shadow-lg w-1/3">
+            <h2 className="text-xl mb-4">Confirm Deletion</h2>
+            <p>Are you sure you want to delete the event "{eventToDelete.EventTitle}"?</p>
+            <div className="flex justify-end mt-4">
+              <button
+                className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
+                onClick={() => setEventToDelete(null)}
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded"
+                onClick={handleDeleteEvent}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

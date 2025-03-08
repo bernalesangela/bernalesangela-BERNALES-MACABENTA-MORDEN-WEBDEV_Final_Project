@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const mysql = require('mysql2');
 const cors = require('cors');
+const connection = require('./src/db'); // Import the connection from db.js
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -10,23 +10,6 @@ app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
-// Create a connection to the database
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME
-});
-
-// Connect to the database
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
-  console.log('Connected to the MariaDB database.');
-});
 
 // Define a route to get all products with category names
 app.get('/api/products', (req, res) => {
@@ -59,32 +42,82 @@ app.post('/api/products', (req, res) => {
   });
 });
 
-// Define a route to update a product
-app.put('/api/products/:id', (req, res) => {
-  const { id } = req.params;
-  const { name, price } = req.body;
-  const query = 'UPDATE products SET ProductName = ?, Price = ? WHERE ProductID = ?';
-  connection.query(query, [name, price, id], (err, results) => {
+// Define a route to get all events with schedule and event type details
+app.get('/api/events', (req, res) => {
+  const query = `
+    SELECT e.EventID, e.EventTitle, s.ScheduleID, s.ScheduleStartDate, s.ScheduleEndDate, e.EventTypeID
+    FROM event e
+    JOIN schedule s ON e.EventID = s.EventID
+    JOIN eventtype et ON e.EventTypeID = et.EventTypeID
+  `;
+  connection.query(query, (err, results) => {
     if (err) {
-      console.error('Error updating product:', err);
+      console.error('Error fetching events:', err);
       res.status(500).send('Server error');
       return;
     }
-    res.status(200).send('Product updated successfully');
+    res.json(results);
   });
 });
 
-// Define a route to delete a product
-app.delete('/api/products/:id', (req, res) => {
-  const { id } = req.params;
-  const query = 'DELETE FROM products WHERE ProductID = ?';
-  connection.query(query, [id], (err, results) => {
+// Define a route to get all event types
+app.get('/api/eventtypes', (req, res) => {
+  const query = 'SELECT * FROM eventtype';
+  connection.query(query, (err, results) => {
     if (err) {
-      console.error('Error deleting product:', err);
+      console.error('Error fetching event types:', err);
       res.status(500).send('Server error');
       return;
     }
-    res.status(200).send('Product deleted successfully');
+    res.json(results);
+  });
+});
+
+// Define a route to add a new event
+app.post('/api/events', (req, res) => {
+  const { EventTitle, ScheduleStartDate, ScheduleEndDate, EventTypeID } = req.body;
+  const eventQuery = 'INSERT INTO event (EventTitle, EventTypeID) VALUES (?, ?)';
+  connection.query(eventQuery, [EventTitle, EventTypeID], (err, eventResults) => {
+    if (err) {
+      console.error('Error adding event:', err);
+      res.status(500).send('Server error');
+      return;
+    }
+    const eventID = eventResults.insertId;
+    const scheduleQuery = 'INSERT INTO schedule (EventID, ScheduleStartDate, ScheduleEndDate) VALUES (?, ?, ?)';
+    connection.query(scheduleQuery, [eventID, ScheduleStartDate, ScheduleEndDate], (err, scheduleResults) => {
+      if (err) {
+        console.error('Error adding schedule:', err);
+        res.status(500).send('Server error');
+        return;
+      }
+      res.status(201).send('Event added successfully');
+    });
+  });
+});
+
+// Define a route to delete an event
+app.delete('/api/events/:id', (req, res) => {
+  const { id } = req.params;
+  const deleteScheduleQuery = 'DELETE FROM schedule WHERE EventID = ?';
+  const deleteEventQuery = 'DELETE FROM event WHERE EventID = ?';
+
+  connection.query(deleteScheduleQuery, [id], (err, scheduleResults) => {
+    if (err) {
+      console.error('Error deleting schedule:', err);
+      res.status(500).send('Server error');
+      return;
+    }
+
+    connection.query(deleteEventQuery, [id], (err, eventResults) => {
+      if (err) {
+        console.error('Error deleting event:', err);
+        res.status(500).send('Server error');
+        return;
+      }
+
+      res.status(200).send('Event deleted successfully');
+    });
   });
 });
 
