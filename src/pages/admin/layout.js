@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen relative">
       {/* Mobile Hamburger Menu */}
       {/* <div className="md:hidden absolute right-0">
         <button

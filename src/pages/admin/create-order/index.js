@@ -3,6 +3,7 @@ import Layout from "../layout";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import Separator from "../../../components/ui/Separator";
 import { Trash } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
 
 export const ItemCard = ({ itemName, img, onClick }) => {
   return (
@@ -22,6 +23,7 @@ const CreateOrder = () => {
   const [amountPaid, setAmoutPaid] = useState(0);
   const [username, setUsername] = useState("");
   const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -170,17 +172,15 @@ const CreateOrder = () => {
                     return (
                       <div
                         key={item.ProductID}
-                        className="cursor-pointer"
+                        className="cursor-pointer flex flex-col items-center w-32 h-32 border bg-arcLight hover:scale-110 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
                         onClick={() => addToCart(item)}
                       >
-                        <img
-                          src={productImage}
-                          alt={item.ProductName}
-                          className="w-32 h-32 object-cover rounded-lg"
-                        />
-                        <p className="text-center break-words mt-2 max-w-32">
+                        <p className="text-center break-words mt-2 text-sm max-w-32 font-semibold">
                           {item.ProductName}
                         </p>
+                        <span className=" text-sm">
+                          P {item.Price.toFixed(2)}
+                        </span>
                       </div>
                     );
                   })}
@@ -201,17 +201,15 @@ const CreateOrder = () => {
                     return (
                       <div
                         key={item.ProductID}
-                        className="cursor-pointer"
+                        className="cursor-pointer flex flex-col items-center w-32 h-32 border bg-arcLight hover:scale-110 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
                         onClick={() => addToCart(item)}
                       >
-                        <img
-                          src={productImage}
-                          alt={item.ProductName}
-                          className="w-32 h-32 object-cover rounded-lg"
-                        />
-                        <p className="text-center break-words mt-2 max-w-32">
+                        <p className="text-center break-words mt-2 max-w-32 text-sm font-semibold">
                           {item.ProductName}
                         </p>
+                        <span className=" text-sm">
+                          P {item.Price.toFixed(2)}
+                        </span>
                       </div>
                     );
                   })}
@@ -222,30 +220,22 @@ const CreateOrder = () => {
             <div className="w-full">
               <h2>Bread</h2>
               <div className="flex gap-5 flex-wrap ">
-                {data.products
-                  .filter((item) => item.CategoryID === 3)
-                  .map((item) => {
-                    const productImage =
-                      images.products.find((img) => img.id === item.ProductID)
-                        ?.img || "/products/default.jpg";
-
-                    return (
-                      <div
-                        key={item.ProductID}
-                        className="cursor-pointer flex flex-col items-center w-32"
-                        onClick={() => addToCart(item)}
-                      >
-                        <img
-                          src={productImage}
-                          alt={item.ProductName}
-                          className="w-32 h-32 object-cover rounded-lg"
-                        />
-                        <p className="text-center break-words mt-2 max-w-32">
-                          {item.ProductName}
-                        </p>
-                      </div>
-                    );
-                  })}
+                {data.products.map((item) => {
+                  return (
+                    <div
+                      key={item.ProductID}
+                      className="cursor-pointer flex flex-col items-center w-32 h-32 border bg-arcLight hover:scale-110 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
+                      onClick={() => addToCart(item)}
+                    >
+                      <p className="text-center break-words mt-2 text-sm max-w-32 font-semibold">
+                        {item.ProductName}
+                      </p>
+                      <span className=" text-sm">
+                        P {item.Price.toFixed(2)}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -262,7 +252,7 @@ const CreateOrder = () => {
                     <th className="p-2">Product</th>
                     <th className="p-2 text-center">Qty</th>
                     <th className="p-2 text-right">Subtotal</th>
-                    <th className="p-2 text-right">Remove</th>
+                    <th className="p-2 text-right"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -304,7 +294,7 @@ const CreateOrder = () => {
               <div className="flex w-full justify-between px-2 py-2 items-center">
                 <label className="font-semibold">Discount</label>
                 <input
-                  className="w-[10rem]"
+                  className="w-[10rem] text-left pl-3 text-black placeholder:text-darkerGray"
                   value={discount}
                   onChange={(e) => setDiscount(e.target.value)}
                   onInput={(e) => {
@@ -319,7 +309,7 @@ const CreateOrder = () => {
               <div className="flex w-full justify-between px-2 py-2 items-center">
                 <label className="font-semibold">Amount Paid</label>
                 <input
-                  className="w-[10rem]"
+                  className="w-[10rem] text-left pl-3 text-black placeholder:text-darkerGray"
                   value={amountPaid}
                   onChange={(e) => setAmoutPaid(e.target.value)}
                   onInput={(e) => {
@@ -342,7 +332,10 @@ const CreateOrder = () => {
 
             {/* Checkout Button Aligned to Bottom */}
             <div className="mt-auto flex justify-center">
-              <button className=" text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600">
+              <button
+                className=" text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition-all duration-200"
+                onClick={() => navigate("/admin/create-order/checkout/")}
+              >
                 Checkout
               </button>
             </div>

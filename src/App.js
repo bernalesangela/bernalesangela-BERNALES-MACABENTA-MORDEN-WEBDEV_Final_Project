@@ -12,6 +12,7 @@ import InventoryPage from "./pages/admin/inventory";
 import { LoginPage } from "./pages/login";
 import EventInventoryPage from "./pages/admin/inventory/event-inventory";
 import SalesTrackingPage from "./pages/admin/sales-tracking";
+import CheckoutPage from "./pages/admin/create-order/checkout";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login/" />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/create-order" element={<CreateOrder />} />
+        <Route path="/admin/create-order/checkout" element={<CheckoutPage />} />
         <Route path="/admin/products" element={<ProductsPage />} />
         <Route path="/admin/inventory" element={<InventoryPage />} />
         <Route

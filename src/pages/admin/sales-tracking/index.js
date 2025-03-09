@@ -191,10 +191,16 @@ const SalesTrackingPage = () => {
           </div>
 
           <div className="flex items-center">
-            <button className="flex items-center gap-2 bg-blueSerenity text-white px-4 rounded-lg shadow-md hover:scale-110 transition-all duration-300 w-fit">
-              Create new Product
+            <div>
+              <span></span>
+            </div>
+            <input
+              type="date"
+              className="flex items-center gap-2 bg-blueSerenity text-white px-4 rounded-lg shadow-md hover:scale-110 transition-all duration-300 w-fit"
+            />
+            {/* Create new Product
               <CaretRight size={20} />
-            </button>
+            </button> */}
           </div>
         </div>
 
