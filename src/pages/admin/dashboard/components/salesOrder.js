@@ -8,11 +8,11 @@ const SalesOrder = () => {
   };
 
   return (
-    <section className="p-5 bg-solidWhite rounded-lg shadow-lg flex flex-col flex-1 ">
+    <section className="p-5 bg-solidWhite rounded-lg shadow-lg flex flex-col h-fit">
       <div className="w-full flex justify-between">
         <h2>Sales Order</h2>
 
-        <select className="text-left pl-3 bg-transparent ">
+        <select className="text-left pl-3 bg-white ">
           <option>Last 7 Days</option>
           <option>1 Month</option>
           <option>1 Year</option>
@@ -21,24 +21,22 @@ const SalesOrder = () => {
 
       <div className="flex-1 overflow-auto">
         <table className="w-full border-collapse">
-          <thead className="bg-gray-100">
+          <thead>
             <tr>
-              <th className="px-4 py-2 text-left">Order ID</th>
-              <th className="px-4 py-2 text-left">Schedule ID</th>
-              <th className="px-4 py-2 text-left">Employee ID</th>
-              <th className="px-4 py-2 text-left">Packed ID</th>
-              <th className="px-4 py-2 text-left">No. of Items</th>
-              <th className="px-4 py-2 text-left">Subtotal</th>
+              <th className="px-4 py-2 text-left">Category</th>
+              <th className="px-4 py-2 text-left">
+                Total No. of Products Sold
+              </th>
+              <th className="px-4 py-2 text-left">Total Sales</th>
+              <th className="px-4 py-2 text-left">Total Transactions</th>
             </tr>
           </thead>
 
           <tbody>
             {[...Array(3)].map((_, i) => (
-              <tr key={i} className="hover:bg-gray-50">
+              <tr key={i} className="hover:bg-arcLight">
                 <td className="px-4 py-2">#00000</td>
                 <td className="px-4 py-2">#00000</td>
-                <td className="px-4 py-2">32</td>
-                <td className="px-4 py-2">32</td>
                 <td className="px-4 py-2">32</td>
                 <td className="px-4 py-2">32</td>
               </tr>
@@ -46,11 +44,6 @@ const SalesOrder = () => {
           </tbody>
         </table>
       </div>
-
-      {/* <button className="mt-4 self-end flex items-center justify-center ">
-        See more
-        <CaretRight size={30} weight="light" />
-      </button> */}
     </section>
   );
 };

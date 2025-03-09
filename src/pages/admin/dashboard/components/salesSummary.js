@@ -9,7 +9,7 @@ import {
 const SalesSummary = () => {
   return (
     <section className="p-4 sm:p-6 md:p-8 bg-solidWhite rounded-lg shadow-lg">
-      <h2 className="text-lg sm:text-xl">Sales Summary</h2>
+      <h2 className=" ">Sales Summary</h2>
 
       <div className="py-4 sm:py-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -38,7 +38,7 @@ const SalesSummary = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex gap-3 items-center bg-white p-4 sm:p-5 rounded-lg shadow-lg text-base sm:text-lg w-full"
+              className="flex gap-3 items-center bg-white p-4 sm:p-5 rounded-lg shadow-lg text-base sm:text-lg w-full hover:scale-110 transition-all duration-200"
             >
               {item.icon}
               <div className="flex flex-col">

@@ -21,6 +21,7 @@ export default {
         blueLight: "#4A78CE",
         blueSerenity: "#4E76CD",
         blueTranquil: "#8EDEFF",
+        blueDark: "#101540",
 
         goldenYellow: "#FFDA6A",
 
