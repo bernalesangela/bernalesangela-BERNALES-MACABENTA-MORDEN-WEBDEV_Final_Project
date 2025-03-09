@@ -13,6 +13,7 @@ import {
   Info,
   SignOut,
   List,
+  X,
 } from "@phosphor-icons/react";
 
 const Sidebar = () => {
@@ -20,6 +21,8 @@ const Sidebar = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
   const fullName = localStorage.getItem("fullName") || "User";
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     navigate("/login");
@@ -59,7 +62,6 @@ const Sidebar = () => {
         redirect: "/admin/sales-tracking",
         icon: <UsersThree size={30} weight="light" />,
       },
-      // history: { text: "History", redirect: "/admin/history", icon: <ClockCounterClockwise size={30} weight="light" /> },
     },
     controls: {
       // settings: {
@@ -82,78 +84,81 @@ const Sidebar = () => {
   };
 
   return (
-    <section className="bg-solidWhite py-10 duration-300 flex h-screen w-[15.125rem]">
-      <div className="flex flex-col justify-between">
-        {/* Mobile Toggle Button */}
-        {/* <div className="md:hidden fixed top-4 right-4 z-50"></div> */}
-        {/* <div className="md:hidden top-0 absolute">
-          <button
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="p-2 bg-lunarGray rounded-md w-fit"
-          >
-            <List size={32} weight="bold" />
-          </button>
-        </div> */}
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-4 left-4 z-50 md:hidden bg-gray-200 p-2 rounded-full shadow-md transition-transform duration-300 w-fit"
+      >
+        {isOpen ? <X size={24} /> : <List size={24} />}
+      </button>
+      <section
+        className={`bg-solidWhite py-10 flex flex-col w-[15.125rem] transition-all duration-500 ease-in-out 
+      fixed top-0 left-0 z-40 h-screen max-h-screen overflow-hidden transform
+      ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"} 
+      md:relative md:translate-x-0 md:opacity-100 md:w-[15.125rem] md:h-screen`}
+      >
+        <div className="flex flex-col justify-between">
+          {/* Top Part */}
+          <div className="flex flex-col">
+            <img src={logo} alt="logo" />
+            <span className="font-bold text-darkerGray p-3">General</span>
 
-        {/* Top Part */}
-        <div className="flex flex-col">
-          <img src={logo} alt="logo" />
-          <span className="font-bold text-darkerGray p-3">General</span>
-
-          {Object.entries(sidebarContent.main).map(([key, value]) => (
-            <div
-              key={key}
-              onClick={() => navigate(value.redirect)}
-              className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${
-                selectedItem === key ? "bg-gray-300 text-black font-bold" : ""
-              }`}
-            >
-              {value.icon}
-              <span className="pl-3 text-lg">{value.text}</span>
-            </div>
-          ))}
-
-          <span className="font-bold text-darkerGray p-3">Records</span>
-
-          {Object.entries(sidebarContent.records).map(([key, value]) => (
-            <div
-              key={key}
-              onClick={() => navigate(value.redirect)}
-              className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${
-                selectedItem === key ? "bg-gray-300 text-black font-bold" : ""
-              }`}
-            >
-              {value.icon}
-              <span className="pl-3 text-lg">{value.text}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Part */}
-        <div className="flex flex-col p-3 gap-3">
-          <div className="bg-white rounded-lg p-3 text-lg">
-            {Object.entries(sidebarContent.controls).map(([key, value]) => (
+            {Object.entries(sidebarContent.main).map(([key, value]) => (
               <div
                 key={key}
-                onClick={key === "logout" ? value.action : undefined}
-                className="flex items-center gap-4 rounded-lg px-4 py-2 text-slate-700 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight"
+                onClick={() => navigate(value.redirect)}
+                className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${
+                  selectedItem === key ? "bg-gray-300 text-black font-bold" : ""
+                }`}
               >
                 {value.icon}
-                <span className="text-base">{value.text}</span>
+                <span className="pl-3 text-lg">{value.text}</span>
+              </div>
+            ))}
+
+            <span className="font-bold text-darkerGray p-3">Records</span>
+
+            {Object.entries(sidebarContent.records).map(([key, value]) => (
+              <div
+                key={key}
+                onClick={() => navigate(value.redirect)}
+                className={`flex items-center justify-start p-3 text-slate-600 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight ${
+                  selectedItem === key ? "bg-gray-300 text-black font-bold" : ""
+                }`}
+              >
+                {value.icon}
+                <span className="pl-3 text-lg">{value.text}</span>
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-lg p-3 flex justify-around items-center">
-            <div className="w-10 h-10 rounded-full bg-arcLight"></div>
-            <div className="flex flex-col ">
-              <span>{fullName}</span>
-              <span>Admin</span>
+          {/* Bottom Part */}
+          <div className="flex flex-col p-3 gap-3">
+            <div className="bg-white rounded-lg p-3 text-lg">
+              {Object.entries(sidebarContent.controls).map(([key, value]) => (
+                <div
+                  key={key}
+                  onClick={key === "logout" ? value.action : undefined}
+                  className="flex items-center gap-4 rounded-lg px-4 py-2 text-slate-700 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight"
+                >
+                  {value.icon}
+                  <span className="text-base">{value.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-white rounded-lg p-3 flex justify-around items-center">
+              <div className="w-10 h-10 rounded-full bg-arcLight"></div>
+              <div className="flex flex-col ">
+                <span>{fullName}</span>
+                <span>Admin</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
