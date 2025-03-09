@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import Layout from "../layout";
-import { CaretRight, MagnifyingGlass } from "@phosphor-icons/react";
+import {
+  CalendarDots,
+  CaretLeft,
+  CaretRight,
+  CashRegister,
+  Coins,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
+import Separator from "../../../components/ui/Separator";
 
 const SalesTrackingPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const sales = [
     {
@@ -174,9 +186,147 @@ const SalesTrackingPage = () => {
   );
   return (
     <Layout>
-      <section className="h-full flex flex-col">
+      {isModalOpen && (
+        <div className="w-full h-full inset-0 fixed bg-black/25 z-50 flex justify-center items-center overflow-y-hidden ">
+          <div className="bg-solidWhite w-1/2 h-2/4 absolute rounded-lg flex flex-col justify-between items-center p-6">
+            <div className="flex items-center justify-center flex-col w-full ">
+              <h2 className="text-darkerGray">Transaction Details</h2>
+              <div className="flex flex-col w-full">
+                <div className="grid grid-cols-2 my-5 gap-5">
+                  <div className=" flex flex-col gap-3">
+                    <div className="grid grid-cols-2">
+                      <span className="font-semibold text-xl text-darkerGray ">
+                        Transaction ID
+                      </span>
+                      <span>#00000</span>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <span className="font-semibold text-xl text-darkerGray ">
+                        Employee ID
+                      </span>
+                      <span>#00000</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="grid grid-cols-2">
+                      <span className="font-semibold text-xl text-darkerGray ">
+                        Date
+                      </span>
+                      <span>01/01/25</span>
+                    </div>
+                    <div className="grid grid-cols-2">
+                      <span className="font-semibold text-xl text-darkerGray ">
+                        Time
+                      </span>
+                      <span>00:00:00 AM</span>
+                    </div>
+                  </div>
+                </div>
+                <Separator />
+                <div className="grid grid-cols-4 w-full mt-5">
+                  <span className="font-semibold text-darkerGray">Product</span>
+                  <span className="font-semibold text-darkerGray">Price</span>
+                  <span className="font-semibold text-darkerGray">
+                    Quantity
+                  </span>
+                  <span className="font-semibold text-darkerGray">
+                    Subtotal
+                  </span>
+                </div>
+
+                <div className="w-full h-full flex flex-col overflow-y-scroll">
+                  <div className="grid grid-cols-4 w-full">
+                    <span className="py-3">Name</span>
+                    <span className="py-3">P 0.00</span>
+                    <span className="py-3">0 pcs</span>
+                    <span className="py-3">P 0.00</span>
+                  </div>
+
+                  <div className="grid grid-cols-4 w-full">
+                    <span className="py-3">Name</span>
+                    <span className="py-3">P 0.00</span>
+                    <span className="py-3">0 pcs</span>
+                    <span className="py-3">P 0.00</span>
+                  </div>
+
+                  <div className="grid grid-cols-4 w-full">
+                    <span className="py-3">Name</span>
+                    <span className="py-3">P 0.00</span>
+                    <span className="py-3">0 pcs</span>
+                    <span className="py-3">P 0.00</span>
+                  </div>
+
+                  <div className="grid grid-cols-4 w-full">
+                    <span className="py-3">Name</span>
+                    <span className="py-3">P 0.00</span>
+                    <span className="py-3">0 pcs</span>
+                    <span className="py-3">P 0.00</span>
+                  </div>
+
+                  <div className="grid grid-cols-4 w-full">
+                    <span className="py-3">Name</span>
+                    <span className="py-3">P 0.00</span>
+                    <span className="py-3">0 pcs</span>
+                    <span className="py-3">P 0.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex w-full justify-between items-center">
+              <span className="text-2xl font-semibold text-darkerGray">
+                TOTAL: P 0.00
+              </span>
+
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-blueSerenity text-white px-6 py-3 rounded-lg hover:scale-105 transition-all duration-200"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* --------------------------- */}
+      <section className="h-full flex flex-col gap-5">
         <div className="w-full flex items-center gap-3">
           <h1 className="text-blueSerenity py-5">Sales Tracking</h1>
+        </div>
+
+        <div className="flex items-center justify-around  gap-10">
+          {/* Sales Summary Items */}
+          {[
+            {
+              icon: <Coins size={32} />,
+              value: "P30,000.00",
+              label: "Total Sales",
+            },
+            {
+              icon: <CashRegister size={40} weight="light" />,
+              value: "50",
+              label: "Total Transactions",
+            },
+            {
+              icon: <CalendarDots size={32} />,
+              value: "P 30,000.00",
+              label: "Total Month Sales",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex gap-3 bg-solidWhite w-full p-4 sm:p-5 rounded-lg shadow-lg text-base sm:text-lg flex-col"
+            >
+              <label className="text-lunarGray font-semibold">
+                {item.label}
+              </label>
+              <div className="flex items-center gap-3">
+                {item.icon}
+                <span className="text-3xl text-darkerGray ">{item.value}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="flex items-center w-full justify-between">
@@ -191,33 +341,25 @@ const SalesTrackingPage = () => {
           </div>
 
           <div className="flex items-center">
-            <div>
-              <span></span>
-            </div>
             <input
               type="date"
-              className="flex items-center gap-2 bg-blueSerenity text-white px-4 rounded-lg shadow-md hover:scale-110 transition-all duration-300 w-fit"
+              className="flex items-center gap-2 bg-blueSerenity text-white px-4 rounded-lg shadow-md hover:scale-110 transition-all duration-300 w-fit uppercase "
             />
-            {/* Create new Product
-              <CaretRight size={20} />
-            </button> */}
           </div>
         </div>
 
         <div className="w-full h-full overflow-y-scroll flex flex-col gap-3">
           <div className=" w-full rounded-lg p-5 grid grid-cols-6 items-center">
             <span className="font-semibold text-darkGray text-left">
-              Product ID
+              Transaction ID
             </span>
             <span className="font-semibold text-darkGray text-left">
-              Product Name
+              Employee ID
             </span>
-            <span className="font-semibold text-darkGray text-left">Price</span>
+            <span className="font-semibold text-darkGray text-left">Date</span>
+            <span className="font-semibold text-darkGray text-left">Time</span>
             <span className="font-semibold text-darkGray text-left">
-              Total Sales
-            </span>
-            <span className="font-semibold text-darkGray text-left">
-              Total Income
+              Subtotal
             </span>
             <span></span>
           </div>
@@ -234,6 +376,12 @@ const SalesTrackingPage = () => {
                   <span>P {sale.price.toFixed(2)}</span>
                   <span>{sale.totalSales}</span>
                   <span>P {sale.totalIncome.toFixed(2)}</span>
+                  <CaretRight
+                    size={28}
+                    color="#4E76CD"
+                    className="hover:scale-110 transition-all duration-200 hover:cursor-pointer"
+                    onClick={() => setIsModalOpen(true)}
+                  />
                 </div>
               ))
             ) : (

@@ -99,7 +99,7 @@ const InventoryPage = () => {
               className="flex items-center gap-2 bg-blueSerenity hover:scale-105 transition-all duration-200 text-white px-4 py-2 rounded-lg shadow-md  w-fit"
               onClick={() => navigate("/admin/inventory/event-inventory")}
             >
-              Manage StockIn/StockOut
+              Manage Stocks
               <CaretRight size={20} />
             </button>
           </div>

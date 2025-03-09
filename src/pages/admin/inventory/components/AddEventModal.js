@@ -35,9 +35,11 @@ const AddEventModal = ({ isOpen, onClose, onSave }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
       <div className="bg-white p-5 rounded-lg shadow-lg w-1/3">
-        <h2 className="text-xl mb-4">Add New Event</h2>
+        <h2 className="text-xl mb-4 text-center text-darkerGray">
+          Add New Event
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2">Event Name</label>

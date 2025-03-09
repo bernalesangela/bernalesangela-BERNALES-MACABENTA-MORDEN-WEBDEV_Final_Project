@@ -203,7 +203,7 @@ const ProductsPage = () => {
           </div>
 
           <div className="flex flex-col overflow-y-scroll gap-3">
-            {data.products.map((item, index) => {
+            {products.map((item, index) => {
               return (
                 <div
                   className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center"
