@@ -155,7 +155,7 @@ const CreateOrder = () => {
         </div>
 
         <div className="flex gap-8 h-full overflow-y-hidden">
-          <div className="bg-solidWhite flex rounded-lg shadow-lg p-5 max-h-full h-full flex-col overflow-y-scroll">
+          <div className="bg-solidWhite flex rounded-lg shadow-lg p-5 max-h-full h-full flex-col overflow-y-scroll w-full">
             {/* Cookies Section  */}
             <div className="w-full">
               <h2>Cookies</h2>
@@ -250,7 +250,7 @@ const CreateOrder = () => {
             </div>
           </div>
 
-          <div className="p-10 bg-solidWhite rounded-lg shadow-lg w-[30%] h-full flex flex-col">
+          <div className="p-10 bg-solidWhite rounded-lg shadow-lg w-[35%] h-full flex flex-col">
             <h2>Cart</h2>
             <Separator />
 

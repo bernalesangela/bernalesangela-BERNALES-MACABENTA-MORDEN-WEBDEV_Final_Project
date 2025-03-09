@@ -8,11 +8,14 @@ const Layout = ({ children }) => {
   return (
     <div className="flex h-screen">
       {/* Mobile Hamburger Menu */}
-      <div className="md:hidden absolute top-4 left-4 z-50">
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+      {/* <div className="md:hidden absolute right-0">
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="w-fit p2 rounded-none"
+        >
           <List size={32} weight="bold" />
         </button>
-      </div>
+      </div> */}
 
       {/* Sidebar for larger screens and mobile dropdown */}
       <div
@@ -24,7 +27,7 @@ const Layout = ({ children }) => {
       </div>
 
       <div className="flex-1 flex flex-col h-full overflow-hidden">
-        <main className="px-4 sm:px-10 py-6 sm:py-10 bg-white flex-1 overflow-auto">
+        <main className="px-4 sm:px-10 py-6 sm:py-10 bg-white flex-1 overflow-y-scroll">
           {children}
         </main>
       </div>
