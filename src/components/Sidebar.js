@@ -17,6 +17,7 @@ import {
 const Sidebar = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
+  const fullName = localStorage.getItem('fullName') || 'User';
 
   const handleLogout = () => {
     navigate("/login");
@@ -40,11 +41,6 @@ const Sidebar = () => {
         text: "Products",
         redirect: "/admin/products",
         icon: <Cookie size={30} weight="light" />,
-      },
-      transactions: {
-        text: "Transactions",
-        redirect: "/admin/customers",
-        icon: <UsersThree size={30} weight="light" />,
       },
       inventory: {
         text: "Inventory",
@@ -133,7 +129,7 @@ const Sidebar = () => {
           <div className="bg-white rounded-lg p-3 flex justify-around items-center">
             <div className="w-10 h-10 rounded-full bg-arcLight"></div>
             <div className="flex flex-col ">
-              <span>User</span>
+              <span>{fullName}</span>
               <span>Admin</span>
             </div>
           </div>
