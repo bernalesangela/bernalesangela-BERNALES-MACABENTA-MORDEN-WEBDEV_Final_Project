@@ -5,6 +5,7 @@ import {
   CaretLeft,
   CaretRight,
   CashRegister,
+  ChartLine,
   Coins,
   MagnifyingGlass,
 } from "@phosphor-icons/react";
@@ -312,6 +313,11 @@ const SalesTrackingPage = () => {
               icon: <CalendarDots size={32} />,
               value: "P 30,000.00",
               label: "Total Month Sales",
+            },
+            {
+              icon: <ChartLine size={32} />,
+              value: "P 30,000.00",
+              label: "Total Year Sales",
             },
           ].map((item, index) => (
             <div
