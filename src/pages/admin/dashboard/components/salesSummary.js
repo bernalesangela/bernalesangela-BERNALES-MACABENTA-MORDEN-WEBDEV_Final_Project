@@ -38,7 +38,7 @@ const SalesSummary = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex gap-3 items-center bg-white p-4 sm:p-5 rounded-lg shadow-lg text-base sm:text-lg w-full hover:scale-110 transition-all duration-200"
+              className="flex gap-3 items-center bg-white p-4 sm:p-5 rounded-lg shadow-lg text-base sm:text-lg w-full hover:scale-105 transition-all duration-200"
             >
               {item.icon}
               <div className="flex flex-col">

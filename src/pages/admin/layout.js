@@ -6,28 +6,15 @@ const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen relative">
-      {/* Mobile Hamburger Menu */}
-      {/* <div className="md:hidden absolute right-0">
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="w-fit p2 rounded-none"
-        >
-          <List size={32} weight="bold" />
-        </button>
-      </div> */}
-
-      {/* Sidebar for larger screens and mobile dropdown */}
-      {/* <div
-        className={`fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:block`}
-      >
+    <div className="flex flex-col md:flex-row min-h-screen">
+      {/* Left Sidebar (if any, otherwise remove) */}
+      {/* <div className="hidden md:block w-64 bg-gray-800 text-white">
         <Sidebar />
       </div> */}
 
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
-        <main className="px-4 sm:px-10 py-6 sm:py-10 bg-white flex-1 overflow-y-scroll">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-y-hidden">
+        <main className="px-4 sm:px-6 md:px-10 py-6 sm:py-10 bg-white flex-1 overflow-y-auto scroll-smooth">
           {children}
         </main>
       </div>

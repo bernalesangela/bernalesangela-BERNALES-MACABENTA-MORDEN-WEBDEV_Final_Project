@@ -17,11 +17,11 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <section className="h-full flex flex-col">
+      <section className="h-full flex flex-col overflow-y-scroll">
         <h1 className="text-blueSerenity py-5">Hello, Angela{username}</h1>
         <div className="flex flex-col flex-1 gap-8 overflow-hidden">
           <SalesSummary />
-          <div className="flex w-full gap-8 flex-1">
+          <div className="flex w-full flex-col md:flex-row gap-4 md:gap-8 flex-1">
             {/* Left Section */}
             <div className="flex flex-col w-full gap-8 flex-1 h-full">
               <div className="bg-solidWhite flex-1 rounded-lg shadow-lg p-5 h-full">
@@ -31,7 +31,7 @@ const Dashboard = () => {
               <SalesOrder />
             </div>
             {/* Right Section - Empty Container */}
-            <div className="p-10 bg-solidWhite rounded-lg shadow-lg w-[30%] h-full">
+            <div className="p-6 md:p-10 bg-solidWhite rounded-lg shadow-lg w-full md:w-[60%] lg:w-[30%] h-auto md:h-full">
               <div className="flex items-center justify-between">
                 <h2>Best Selling Products</h2>
                 <select className="text-left pl-3 bg-white w-fit">
