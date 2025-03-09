@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../layout";
 import SalesSummary from "./components/salesSummary";
-import StockReport from "./components/stockReport";
+//import StockReport from "./components/stockReport";
 import SalesOrder from "./components/salesOrder";
 
 const Dashboard = () => {
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
+
   return (
     <Layout>
       <section className="h-full flex flex-col">
-        <h1 className="text-blueSerenity py-5">Hello, Angela</h1>
-
+        <h1 className="text-blueSerenity py-5">Hello, {username}</h1>
         <div className="flex flex-col flex-1 gap-8 overflow-hidden">
           <SalesSummary />
-
           <div className="flex w-full gap-8 flex-1">
             {/* Left Section */}
             <div className="flex flex-col w-full gap-8 flex-1">
@@ -21,7 +28,6 @@ const Dashboard = () => {
               </div>
               <SalesOrder />
             </div>
-
             {/* Right Section - Empty Container */}
             <div className="p-10 bg-solidWhite rounded-lg shadow-lg w-[30%] h-full">
               <label>an empty container</label>
