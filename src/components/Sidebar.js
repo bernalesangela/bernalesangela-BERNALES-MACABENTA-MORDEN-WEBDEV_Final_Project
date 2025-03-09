@@ -42,11 +42,6 @@ const Sidebar = () => {
         redirect: "/admin/products",
         icon: <Cookie size={30} weight="light" />,
       },
-      transactions: {
-        text: "Transactions",
-        redirect: "/admin/customers",
-        icon: <UsersThree size={30} weight="light" />,
-      },
       inventory: {
         text: "Inventory",
         redirect: "/admin/inventory",

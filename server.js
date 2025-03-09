@@ -5,14 +5,12 @@ const connection = require('./src/db'); // Import the connection from db.js
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Enable CORS
-app.use(cors());
+ app.use(cors()); 
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+ app.use(express.json());
 
-// Define a route to handle login requests
-app.post('/api/login', (req, res) => {
+
+ app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT EmployeeUsername FROM employee WHERE EmployeeUsername = ? AND EmployeePassword = ?';
   connection.query(query, [username, password], (err, results) => {
@@ -166,6 +164,109 @@ app.delete('/api/events/:id', (req, res) => {
 
       res.status(200).send('Event deleted successfully');
     });
+  });
+});
+
+app.get('/api/stockin', (req, res) => {
+  // Make sure to properly format the SQL query with backticks
+  const query = `
+    SELECT s.StockID, s.Quantity, CAST(s.Price AS DECIMAL(10,2)) AS Price, 
+           s.ExpiryDate, p.ProductName
+    FROM stockin s
+    JOIN products p ON s.ProductID = p.ProductID
+  `;
+  
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching stock-in items:', err);
+      return res.status(500).json({ error: 'Database error', details: err.message });
+    }
+    
+    try {
+      // Convert to a simple array of objects to avoid circular reference issues
+      const formattedResults = results.map(item => ({
+        StockID: item.StockID,
+        Quantity: item.Quantity,
+        Price: parseFloat(item.Price) || 0,
+        ExpiryDate: item.ExpiryDate,
+        ProductName: item.ProductName
+      }));
+      
+      return res.status(200).json(formattedResults);
+    } catch (formatErr) {
+      console.error('Error formatting results:', formatErr);
+      return res.status(500).json({ error: 'Data formatting error', details: formatErr.message });
+    }
+  });
+});
+
+app.get('/api/eventdetails', (req, res) => {
+
+  const query = `
+    SELECT e.EventID, e.EventTitle, et.EventCategory, 
+           s.ScheduleID, s.ScheduleStartDate, s.ScheduleEndDate
+    FROM event e
+    JOIN schedule s ON e.EventID = s.EventID
+    JOIN eventtype et ON e.EventTypeID = et.EventTypeID
+  `;
+  
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching event details:', err);
+      return res.status(500).json({ error: 'Database error', details: err.message });
+    }
+    
+    try {
+      // Format the results
+      const formattedResults = results.map(item => ({
+        EventID: item.EventID,
+        EventTitle: item.EventTitle,
+        EventCategory: item.EventCategory,
+        ScheduleID: item.ScheduleID,
+        ScheduleStartDate: item.ScheduleStartDate,
+        ScheduleEndDate: item.ScheduleEndDate
+      }));
+      
+      return res.status(200).json(formattedResults);
+    } catch (formatErr) {
+      console.error('Error formatting results:', formatErr);
+      return res.status(500).json({ error: 'Data formatting error', details: formatErr.message });
+    }
+  });
+});
+
+app.get('/api/stockout', (req, res) => {
+  const query = `
+    SELECT p.ProductName, 
+           sod.Quantity AS NumberOfStocks, 
+           si.Quantity AS AvailableStocks, 
+           si.ExpiryDate, 
+           sod.Price
+    FROM stockoutdetails sod
+    JOIN stockin si ON sod.StockID = si.StockID
+    JOIN products p ON si.ProductID = p.ProductID
+  `;
+  
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching stockout data:', err);
+      return res.status(500).json({ error: 'Database error', details: err.message });
+    }
+    
+    try {
+      const formattedResults = results.map(row => ({
+        ProductName: row.ProductName,
+        NumberOfStocks: row.NumberOfStocks,
+        AvailableStocks: row.AvailableStocks,
+        ExpiryDate: row.ExpiryDate,
+        Price: parseFloat(row.Price) || 0
+      }));
+      
+      return res.status(200).json(formattedResults);
+    } catch (formatErr) {
+      console.error('Error formatting results:', formatErr);
+      return res.status(500).json({ error: 'Data formatting error', details: formatErr.message });
+    }
   });
 });
 

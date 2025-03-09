@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../layout";
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import { ItemCard } from "./components/itemCard";
 import Separator from "../../../components/ui/Separator";
+
+export const ItemCard = ({ itemName, img, onClick }) => {
+  return (
+    <div className="cursor-pointer" onClick={onClick}>
+      <img src={img} alt={itemName} className="w-32 h-32 object-cover rounded-lg" />
+      <p className="text-center mt-2">{itemName}</p>
+    </div>
+  );
+};
 
 const CreateOrder = () => {
   const [discount, setDiscount] = useState(0);
   const [amountPaid, setAmoutPaid] = useState(0);
   const [username, setUsername] = useState('');
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -18,76 +27,65 @@ const CreateOrder = () => {
 
   const data = {
     products: [
-      { ProductID: 1, ProductName: "Biscoff Cheesecake", CategoryID: 1 },
-      { ProductID: 2, ProductName: "Funfetti", CategoryID: 1 },
-      { ProductID: 3, ProductName: "Matcha with Cream Cheese", CategoryID: 1 },
-      { ProductID: 4, ProductName: "Nutella Blast", CategoryID: 1 },
-      { ProductID: 5, ProductName: "Oreo Cheesecake", CategoryID: 1 },
-      { ProductID: 6, ProductName: "Rocky Road", CategoryID: 1 },
-      { ProductID: 7, ProductName: "Smores 2.0", CategoryID: 1 },
-      { ProductID: 8, ProductName: "Special Crinkles", CategoryID: 1 },
-      { ProductID: 9, ProductName: "Brownies", CategoryID: 2 },
-      { ProductID: 10, ProductName: "Butterscotch", CategoryID: 2 },
-      { ProductID: 11, ProductName: "Revel Bars", CategoryID: 2 },
-      { ProductID: 12, ProductName: "Red Velvet Cheesecake", CategoryID: 2 },
-      { ProductID: 13, ProductName: "Ham and Cheese Empanada", CategoryID: 3 },
-      {
-        ProductID: 14,
-        ProductName: "Small - Korean Cream Cheese Garlic Bread",
-        CategoryID: 3,
-      },
-      {
-        ProductID: 15,
-        ProductName: "Medium - Korean Cream Cheese Garlic Bread",
-        CategoryID: 3,
-      },
-      {
-        ProductID: 16,
-        ProductName: "Large - Korean Cream Cheese Garlic Bread",
-        CategoryID: 3,
-      },
+      { ProductID: 1, ProductName: "Biscoff Cheesecake", CategoryID: 1, Price: 150 },
+      { ProductID: 2, ProductName: "Funfetti", CategoryID: 1, Price: 210 },
+      { ProductID: 3, ProductName: "Matcha with Cream Cheese", CategoryID: 1, Price: 180 },
+      { ProductID: 4, ProductName: "Nutella Blast", CategoryID: 1, Price: 220 },
+      { ProductID: 5, ProductName: "Oreo Cheesecake", CategoryID: 1, Price: 240 },
+      { ProductID: 6, ProductName: "Rocky Road", CategoryID: 1, Price: 200 },
+      { ProductID: 7, ProductName: "Smores 2.0", CategoryID: 1, Price: 250 },
+      { ProductID: 8, ProductName: "Special Crinkles", CategoryID: 1, Price: 100 },
+      { ProductID: 9, ProductName: "Brownies", CategoryID: 2, Price: 150 },
+      { ProductID: 10, ProductName: "Butterscotch", CategoryID: 2, Price: 170 },
+      { ProductID: 11, ProductName: "Revel Bars", CategoryID: 2, Price: 190 },
+      { ProductID: 12, ProductName: "Red Velvet Cheesecake", CategoryID: 2, Price: 230 },
+      { ProductID: 13, ProductName: "Ham and Cheese Empanada", CategoryID: 3, Price: 120 },
+      { ProductID: 14, ProductName: "Small - Korean Cream Cheese Garlic Bread", CategoryID: 3, Price: 140 },
+      { ProductID: 15, ProductName: "Medium - Korean Cream Cheese Garlic Bread", CategoryID: 3, Price: 160 },
+      { ProductID: 16, ProductName: "Large - Korean Cream Cheese Garlic Bread", CategoryID: 3, Price: 180 },
     ],
   };
 
   const images = {
     products: [
-      {
-        id: 1,
-        img: "/products/BiscoffCheesecake.jpg",
-      },
-      {
-        id: 2,
-        img: "/products/Funfetti.jpg",
-      },
-      {
-        id: 1,
-        img: "/products/CookieMonster.jpg",
-      },
-      {
-        id: 3,
-        img: "/products/HamandCheeseEmpanada.jpg",
-      },
-      {
-        id: 4,
-        img: "/products/KoreanCreamCheeseGarlicBread.jpg",
-      },
-      {
-        id: 0,
-        img: "/products/KoreanCreamCheeseGarlicBread. jpg",
-      },
-      {
-        id: 3,
-        img: "/products/MatchawithCreamCheese.jpg",
-      },
-      {
-        id: 4,
-        img: "/products/NutellaBlast.jpg",
-      },
-      {
-        id: 6,
-        img: "/products/RockyRoad.jpg",
-      },
+      { id: 1, img: "/products/BiscoffCheesecake.jpg" },
+      { id: 2, img: "/products/Funfetti.jpg" },
+      { id: 3, img: "/products/MatchawithCreamCheese.jpg" },
+      { id: 4, img: "/products/NutellaBlast.jpg" },
+      { id: 5, img: "/products/OreoCheesecake.jpg" },
+      { id: 6, img: "/products/RockyRoad.jpg" },
+      { id: 7, img: "/products/Smores.jpg" },
+      { id: 8, img: "/products/SpecialCrinkles.jpg" },
+      { id: 9, img: "/products/Brownies.jpg" },
+      { id: 10, img: "/products/Butterscotch.jpg" },
+      { id: 11, img: "/products/RevelBars.jpg" },
+      { id: 12, img: "/products/RedVelvetCheesecake.jpg" },
+      { id: 13, img: "/products/HamandCheeseEmpanada.jpg" },
+      { id: 14, img: "/products/KoreanCreamCheeseGarlicBread.jpg" },
+      { id: 15, img: "/products/KoreanCreamCheeseGarlicBread.jpg" },
+      { id: 16, img: "/products/KoreanCreamCheeseGarlicBread.jpg" },
     ],
+  };
+
+  const addToCart = (product) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find(item => item.ProductID === product.ProductID);
+      if (existingItem) {
+        return prevItems.map(item =>
+          item.ProductID === product.ProductID
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...product, quantity: 1 }];
+      }
+    });
+  };
+
+  const removeFromCart = (productID) => {
+    setCartItems((prevItems) => {
+      return prevItems.filter(item => item.ProductID !== productID);
+    });
   };
 
   return (
@@ -118,17 +116,20 @@ const CreateOrder = () => {
                         ?.img || "/products/default.jpg";
 
                     return (
-                      <ItemCard
+                      <div
                         key={item.ProductID}
-                        itemName={item.ProductName}
-                        img={productImage}
-                      />
+                        className="cursor-pointer"
+                        onClick={() => addToCart(item)}
+                      >
+                        <img src={productImage} alt={item.ProductName} className="w-32 h-32 object-cover rounded-lg" />
+                        <p className="text-center mt-2">{item.ProductName}</p>
+                      </div>
                     );
                   })}
               </div>
             </div>
 
-            {/* Cookies Section */}
+            {/* Bars Section */}
             <div className="w-full">
               <h2>Bars</h2>
               <div className="flex gap-5 flex-wrap ">
@@ -140,11 +141,14 @@ const CreateOrder = () => {
                         ?.img || "/products/default.jpg";
 
                     return (
-                      <ItemCard
+                      <div
                         key={item.ProductID}
-                        itemName={item.ProductName}
-                        img={productImage}
-                      />
+                        className="cursor-pointer"
+                        onClick={() => addToCart(item)}
+                      >
+                        <img src={productImage} alt={item.ProductName} className="w-32 h-32 object-cover rounded-lg" />
+                        <p className="text-center mt-2">{item.ProductName}</p>
+                      </div>
                     );
                   })}
               </div>
@@ -162,11 +166,14 @@ const CreateOrder = () => {
                         ?.img || "/products/default.jpg";
 
                     return (
-                      <ItemCard
+                      <div
                         key={item.ProductID}
-                        itemName={item.ProductName}
-                        img={productImage}
-                      />
+                        className="cursor-pointer"
+                        onClick={() => addToCart(item)}
+                      >
+                        <img src={productImage} alt={item.ProductName} className="w-32 h-32 object-cover rounded-lg" />
+                        <p className="text-center mt-2">{item.ProductName}</p>
+                      </div>
                     );
                   })}
               </div>
@@ -185,26 +192,34 @@ const CreateOrder = () => {
                     <th className="p-2">Product</th>
                     <th className="p-2 text-center">Qty</th>
                     <th className="p-2 text-right">Subtotal</th>
+                    <th className="p-2 text-right">Remove</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="hover:bg-gray-50">
-                    <td className="p-2">Name</td>
-                    <td className="p-2 text-center">0</td>
-                    <td className="p-2 text-right">P 0.00</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50">
-                    <td className="p-2">Name</td>
-                    <td className="p-2 text-center">0</td>
-                    <td className="p-2 text-right">P 0.00</td>
-                  </tr>
+                  {cartItems.map((item) => (
+                    <tr key={item.ProductID} className="hover:bg-gray-50">
+                      <td className="p-2">{item.ProductName}</td>
+                      <td className="p-2 text-center">{item.quantity}</td>
+                      <td className="p-2 text-right">P {item.quantity * item.Price}</td>
+                      <td className="p-2 text-right">
+                        <button
+                          className="text-white bg-red-500 hover:bg-red-600 text-sm px-2 py-1 rounded w-20"
+                          onClick={() => removeFromCart(item.ProductID)}
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
 
             <div className="flex w-full justify-between px-2 py-2">
               <label className="font-semibold">Total</label>
-              <label className="font-semibold">P 0.00</label>
+              <label className="font-semibold">
+                P {cartItems.reduce((total, item) => total + item.quantity * item.Price, 0)}
+              </label>
             </div>
             <Separator />
 
