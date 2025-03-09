@@ -17,7 +17,7 @@ const NewProduct = () => {
   };
 
   const handleBackClick = () => {
-    navigate('/admin/products'); // Navigate to the products page
+    navigate("/admin/products"); // Navigate to the products page
   };
 
   const handleSubmit = async (event) => {
@@ -28,25 +28,26 @@ const NewProduct = () => {
     const newProduct = {
       name: productName,
       category: categoryID,
-      price: parseFloat(price)
+      price: parseFloat(price),
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/products', { // Ensure the URL matches your server's URL
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/api/products", {
+        // Ensure the URL matches your server's URL
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newProduct)
+        body: JSON.stringify(newProduct),
       });
 
       if (response.ok) {
-        navigate('/admin/products');
+        navigate("/admin/products");
       } else {
-        console.error('Error adding product:', response.statusText);
+        console.error("Error adding product:", response.statusText);
       }
     } catch (error) {
-      console.error('Error adding product:', error);
+      console.error("Error adding product:", error);
     }
   };
 
@@ -64,12 +65,15 @@ const NewProduct = () => {
         </div>
 
         <h2 className="text-darkerGray">Product Details</h2>
-        <form onSubmit={handleSubmit} className="bg-solidWhite flex rounded-lg shadow-lg p-10 h-full flex-col gap-5 last:justify-end">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-solidWhite flex rounded-lg shadow-lg p-10 h-full flex-col gap-5 last:justify-end"
+        >
           <div className="w-full flex flex-col gap-1">
             <label>Product Name</label>
             <input
               placeholder="Enter product name"
-              className="w-full text-left pl-3"
+              className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
               required
@@ -78,7 +82,7 @@ const NewProduct = () => {
           <div className="w-full flex flex-col">
             <label>Category</label>
             <select
-              className="w-full text-left pl-3"
+              className="w-full text-left pl-3 placeholder:text-lunarGray"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
@@ -95,13 +99,19 @@ const NewProduct = () => {
               type="number"
               step="0.01"
               placeholder="Enter price"
-              className="w-full text-left pl-3"
+              className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              onInput={(e) => {
+                e.currentTarget.value = e.currentTarget.value.replace(
+                  /[^0-9]/g,
+                  ""
+                );
+              }}
               required
             />
           </div>
-          <div className="w-full flex flex-col items-center border-2 border-dashed border-gray-400 p-5 rounded-lg cursor-pointer h-full">
+          {/* <div className="w-full flex flex-col items-center border-2 border-dashed border-gray-400 p-5 rounded-lg cursor-pointer h-full">
             <label
               htmlFor="file-upload"
               className="w-full h-[20rem] flex flex-col items-center justify-center text-gray-500 hover:text-gray-700 transition"
@@ -115,10 +125,15 @@ const NewProduct = () => {
               className="hidden"
               onChange={handleFileChange}
             />
-          </div>
+          </div> */}
 
           <div className="w-full justify-end flex h-full mt-auto">
-            <button type="submit" className="self-end">Submit</button>
+            <button
+              type="submit"
+              className="self-end hover:scale-105 transition-all duration-200"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </section>

@@ -54,14 +54,19 @@ const Sidebar = () => {
         redirect: "/admin/sales-tracking",
         icon: <CashRegister size={30} weight="light" />,
       },
+      employees: {
+        text: "Employees",
+        redirect: "/admin/sales-tracking",
+        icon: <UsersThree size={30} weight="light" />,
+      },
       // history: { text: "History", redirect: "/admin/history", icon: <ClockCounterClockwise size={30} weight="light" /> },
     },
     controls: {
-      settings: {
-        text: "Settings",
-        redirect: "",
-        icon: <Gear size={25} weight="light" />,
-      },
+      // settings: {
+      //   text: "Settings",
+      //   redirect: "",
+      //   icon: <Gear size={25} weight="light" />,
+      // },
       about: {
         text: "About",
         redirect: "",

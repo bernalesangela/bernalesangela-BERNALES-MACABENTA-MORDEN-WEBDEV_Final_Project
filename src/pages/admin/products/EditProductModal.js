@@ -41,10 +41,17 @@ const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
             />
           </div>
           <div className="flex justify-end">
-            <button type="button" className="mr-2 p-2 bg-gray-300 rounded" onClick={onClose}>
+            <button
+              type="button"
+              className="mr-2 p-2 bg-gray-300 rounded text-darkerGray"
+              onClick={onClose}
+            >
               Cancel
             </button>
-            <button type="submit" className="p-2 bg-blue-500 text-white rounded">
+            <button
+              type="submit"
+              className="p-2 bg-blue-500 text-white rounded"
+            >
               Save
             </button>
           </div>

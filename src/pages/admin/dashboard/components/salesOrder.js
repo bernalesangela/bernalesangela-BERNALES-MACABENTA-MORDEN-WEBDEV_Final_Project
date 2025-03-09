@@ -47,10 +47,10 @@ const SalesOrder = () => {
         </table>
       </div>
 
-      <button className="mt-4 self-end flex items-center justify-center ">
+      {/* <button className="mt-4 self-end flex items-center justify-center ">
         See more
         <CaretRight size={30} weight="light" />
-      </button>
+      </button> */}
     </section>
   );
 };

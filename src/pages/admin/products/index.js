@@ -10,79 +10,79 @@ const ProductsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  // const data = {
-  //   products: [
-  //     { ProductID: 1, ProductName: "Biscoff Cheesecake", CategoryID: 1 },
-  //     { ProductID: 2, ProductName: "Funfetti", CategoryID: 1 },
-  //     { ProductID: 3, ProductName: "Matcha with Cream Cheese", CategoryID: 1 },
-  //     { ProductID: 4, ProductName: "Nutella Blast", CategoryID: 1 },
-  //     { ProductID: 5, ProductName: "Oreo Cheesecake", CategoryID: 1 },
-  //     { ProductID: 6, ProductName: "Rocky Road", CategoryID: 1 },
-  //     { ProductID: 7, ProductName: "Smores 2.0", CategoryID: 1 },
-  //     { ProductID: 8, ProductName: "Special Crinkles", CategoryID: 1 },
-  //     { ProductID: 9, ProductName: "Brownies", CategoryID: 2 },
-  //     { ProductID: 10, ProductName: "Butterscotch", CategoryID: 2 },
-  //     { ProductID: 11, ProductName: "Revel Bars", CategoryID: 2 },
-  //     { ProductID: 12, ProductName: "Red Velvet Cheesecake", CategoryID: 2 },
-  //     { ProductID: 13, ProductName: "Ham and Cheese Empanada", CategoryID: 3 },
-  //     {
-  //       ProductID: 14,
-  //       ProductName: "Small - Korean Cream Cheese Garlic Bread",
-  //       CategoryID: 3,
-  //     },
-  //     {
-  //       ProductID: 15,
-  //       ProductName: "Medium - Korean Cream Cheese Garlic Bread",
-  //       CategoryID: 3,
-  //     },
-  //     {
-  //       ProductID: 16,
-  //       ProductName: "Large - Korean Cream Cheese Garlic Bread",
-  //       CategoryID: 3,
-  //     },
-  //   ],
-  // };
-
-  const images = {
+  const data = {
     products: [
+      { ProductID: 1, ProductName: "Biscoff Cheesecake", CategoryID: 1 },
+      { ProductID: 2, ProductName: "Funfetti", CategoryID: 1 },
+      { ProductID: 3, ProductName: "Matcha with Cream Cheese", CategoryID: 1 },
+      { ProductID: 4, ProductName: "Nutella Blast", CategoryID: 1 },
+      { ProductID: 5, ProductName: "Oreo Cheesecake", CategoryID: 1 },
+      { ProductID: 6, ProductName: "Rocky Road", CategoryID: 1 },
+      { ProductID: 7, ProductName: "Smores 2.0", CategoryID: 1 },
+      { ProductID: 8, ProductName: "Special Crinkles", CategoryID: 1 },
+      { ProductID: 9, ProductName: "Brownies", CategoryID: 2 },
+      { ProductID: 10, ProductName: "Butterscotch", CategoryID: 2 },
+      { ProductID: 11, ProductName: "Revel Bars", CategoryID: 2 },
+      { ProductID: 12, ProductName: "Red Velvet Cheesecake", CategoryID: 2 },
+      { ProductID: 13, ProductName: "Ham and Cheese Empanada", CategoryID: 3 },
       {
-        id: 1,
-        img: "/products/BiscoffCheesecake.jpg",
+        ProductID: 14,
+        ProductName: "Small - Korean Cream Cheese Garlic Bread",
+        CategoryID: 3,
       },
       {
-        id: 2,
-        img: "/products/Funfetti.jpg",
+        ProductID: 15,
+        ProductName: "Medium - Korean Cream Cheese Garlic Bread",
+        CategoryID: 3,
       },
       {
-        id: 1,
-        img: "/products/CookieMonster.jpg",
-      },
-      {
-        id: 3,
-        img: "/products/HamandCheeseEmpanada.jpg",
-      },
-      {
-        id: 4,
-        img: "/products/KoreanCreamCheeseGarlicBread.jpg",
-      },
-      {
-        id: 0,
-        img: "/products/KoreanCreamCheeseGarlicBread. jpg",
-      },
-      {
-        id: 3,
-        img: "/products/MatchawithCreamCheese.jpg",
-      },
-      {
-        id: 4,
-        img: "/products/NutellaBlast.jpg",
-      },
-      {
-        id: 6,
-        img: "/products/RockyRoad.jpg",
+        ProductID: 16,
+        ProductName: "Large - Korean Cream Cheese Garlic Bread",
+        CategoryID: 3,
       },
     ],
   };
+
+  // const images = {
+  //   products: [
+  //     {
+  //       id: 1,
+  //       img: "/products/BiscoffCheesecake.jpg",
+  //     },
+  //     {
+  //       id: 2,
+  //       img: "/products/Funfetti.jpg",
+  //     },
+  //     {
+  //       id: 1,
+  //       img: "/products/CookieMonster.jpg",
+  //     },
+  //     {
+  //       id: 3,
+  //       img: "/products/HamandCheeseEmpanada.jpg",
+  //     },
+  //     {
+  //       id: 4,
+  //       img: "/products/KoreanCreamCheeseGarlicBread.jpg",
+  //     },
+  //     {
+  //       id: 0,
+  //       img: "/products/KoreanCreamCheeseGarlicBread. jpg",
+  //     },
+  //     {
+  //       id: 3,
+  //       img: "/products/MatchawithCreamCheese.jpg",
+  //     },
+  //     {
+  //       id: 4,
+  //       img: "/products/NutellaBlast.jpg",
+  //     },
+  //     {
+  //       id: 6,
+  //       img: "/products/RockyRoad.jpg",
+  //     },
+  //   ],
+  // };
 
   useEffect(() => {
     // Add error handling and loading state
@@ -174,7 +174,7 @@ const ProductsPage = () => {
           <h1 className="text-blueSerenity py-5">Products</h1>
           <div className="flex items-center">
             <button
-              className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600"
+              className="flex items-center gap-2 bg-blueSerenity text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition-all duration-200 w-fit"
               onClick={() => navigate("/admin/products/new-product")}
             >
               Create new Product
@@ -184,49 +184,51 @@ const ProductsPage = () => {
         </div>
 
         <div className="px-10 max-h-full h-full overflow-x-auto gap-3 flex flex-col">
-          <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-7 items-center">
-            <span className="font-semibold text-darkGray text-left">Name</span>
-            <span className="font-semibold text-darkGray text-left">
+          <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
+            <span className="font-semibold text-darkerGray text-left text-xl">
+              Name
+            </span>
+            <span className="font-semibold text-darkerGray text-left text-xl">
               Product ID
             </span>
-            <span className="font-semibold text-darkGray text-left">
+            <span className="font-semibold text-darkerGray text-left text-xl">
               Category
             </span>
-            <span className="font-semibold text-darkGray text-left">Price</span>
-            <span className="font-semibold text-darkGray text-left">Image</span>
+            <span className="font-semibold text-darkerGray text-left text-xl">
+              Price
+            </span>
+            {/* <span className="font-semibold text-darkGray text-left">Image</span> */}
             <span></span>
             <span></span>
           </div>
 
           <div className="flex flex-col overflow-y-scroll gap-3">
-            {products.map((item, index) => {
-              const productImage =
-                images.products.find((img) => img.id === item.ProductID)?.img ||
-                "/products/default.jpg";
-
+            {data.products.map((item, index) => {
               return (
                 <div
-                  className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-7 items-center"
+                  className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center"
                   key={item.ProductID || index}
                 >
                   <span>{item.ProductName || "N/A"}</span>
                   <span>{item.ProductID || "N/A"}</span>
                   <span>{item.CategoryName || "N/A"}</span>
                   <span>₱{item.Price || "0.00"}</span>
-                  <img
+                  {/* <img
                     src={productImage}
                     className="w-20 h-20 rounded-lg drop-shadow-lg bg-white object-cover"
                     alt={item.ProductName}
-                  />
+                  /> */}
                   <PencilSimple
                     size={32}
                     className="cursor-pointer"
                     onClick={() => handleEditClick(item)}
+                    color="#4E76CD"
                   />
                   <TrashSimple
                     size={32}
                     className="cursor-pointer"
                     onClick={() => handleDelete(item.ProductID)}
+                    color="#9c0000"
                   />
                 </div>
               );
