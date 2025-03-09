@@ -70,8 +70,8 @@ const CheckoutPage = () => {
           <h1 className="text-blueSerenity py-5">Checkout</h1>
         </div>
 
-        <div className="bg-solidWhite flex rounded-lg shadow-lg p-10 max-h-full h-full flex-col overflow-y-scroll w-full">
-          <div className="grid grid-cols-2 w-full gap-[20rem] mb-5">
+        <div className="bg-solidWhite flex rounded-lg shadow-lg md:p-10 max-h-full h-full flex-col overflow-y-scroll w-full">
+          <div className="flex flex-col md:grid md:grid-cols-2 w-full mb-5">
             <div className="w-full grid gap-3">
               <div className="w-full grid grid-cols-2">
                 <span className="font-semibold text-darkerGray text-lg">
@@ -107,83 +107,85 @@ const CheckoutPage = () => {
 
           <div className="w-full flex flex-col flex-1 justify-between mt-20">
             <div className="w-full grid grid-cols-4">
-              <span className="text-darkerGray text-2xl font-semibold">
+              <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                 Product
               </span>
-              <span className="text-darkerGray text-2xl font-semibold">
+              <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                 Price
               </span>
-              <span className="text-darkerGray text-2xl font-semibold">
+              <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                 Quantity
               </span>
-              <span className="text-darkerGray text-2xl font-semibold">
+              <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                 Subtotal
               </span>
             </div>
             <Separator />
 
-            <div className="w-full h-full flex flex-col">
+            {/* Content Section */}
+            <div className="w-full h-full flex flex-col flex-1">
               <div className="w-full grid grid-cols-4">
-                <span className="p-5">Name</span>
-                <span className="p-5">P 0.00</span>
-                <span className="p-5">0 pcs</span>
-                <span className="p-5">P 0.00</span>
+                <span className="py-3">Name</span>
+                <span className="py-3">P 0.00</span>
+                <span className="py-3">0 pcs</span>
+                <span className="py-3">P 0.00</span>
               </div>
               <div className="w-full grid grid-cols-4">
-                <span className="p-5">Name</span>
-                <span className="p-5">P 0.00</span>
-                <span className="p-5">0 pcs</span>
-                <span className="p-5">P 0.00</span>
+                <span className="py-3">Name</span>
+                <span className="py-3">P 0.00</span>
+                <span className="py-3">0 pcs</span>
+                <span className="py-3">P 0.00</span>
               </div>
               <div className="w-full grid grid-cols-4">
-                <span className="p-5">Name</span>
-                <span className="p-5">P 0.00</span>
-                <span className="p-5">0 pcs</span>
-                <span className="p-5">P 0.00</span>
+                <span className="py-3">Name</span>
+                <span className="py-3">P 0.00</span>
+                <span className="py-3">0 pcs</span>
+                <span className="py-3">P 0.00</span>
               </div>
               <Separator />
 
-              <div className="flex flex-col w-full">
+              {/* Payment Details */}
+              <div className="flex flex-col w-full flex-1">
                 <div className="w-full flex justify-between p-5">
-                  <span className="text-darkerGray text-2xl font-semibold">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     Mode of Payment
                   </span>
-                  <span className="text-darkerGray text-2xl font-semibold">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     Cash
                   </span>
                 </div>
 
                 <div className="w-full flex justify-between">
-                  <span className="text-darkerGray text-2xl font-semibold p-5">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     Discount
                   </span>
-                  <span className="text-darkerGray text-2xl font-semibold p-5">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     P 0.00
                   </span>
                 </div>
 
                 <div className="w-full flex justify-between">
-                  <span className="text-darkerGray text-2xl font-semibold p-5">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     Total Amount
                   </span>
-                  <span className="text-darkerGray text-2xl font-semibold p-5">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     P 0.00
                   </span>
                 </div>
 
                 <div className="w-full flex justify-between">
-                  <span className="text-darkerGray text-2xl font-semibold p-5">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     Change
                   </span>
-                  <span className="text-darkerGray text-2xl font-semibold p-5">
+                  <span className="text-darkerGray text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
                     P 0.00
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Buttons aligned at bottom-right */}
-            <div className="w-full flex justify-end gap-3 mt-auto">
+            {/* Buttons Aligned at Bottom */}
+            <div className="w-full flex justify-end gap-3 mt-auto sticky bottom-0  p-5">
               <button
                 className="px-6 py-3 bg-gray-300 text-darkerGray rounded-lg hover:scale-105 transition-all duration-200"
                 onClick={() => setIsCloseModal(true)}

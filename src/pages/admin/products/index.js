@@ -177,65 +177,66 @@ const ProductsPage = () => {
               className="flex items-center gap-2 bg-blueSerenity text-white px-4 py-2 rounded-lg shadow-md hover:scale-105 transition-all duration-200 w-fit"
               onClick={() => navigate("/admin/products/new-product")}
             >
-              Create new Product
+              <span className="block sm:hidden">New</span>{" "}
+              {/* Shown only on small screens */}
+              <span className="hidden sm:block">Create New Product</span>{" "}
+              {/* Hidden on small screens */}
               <CaretRight size={20} />
             </button>
           </div>
         </div>
 
-        <div className="px-10 max-h-full h-full overflow-x-auto gap-3 flex flex-col">
-          <div className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center">
-            <span className="font-semibold text-darkerGray text-left text-xl">
+        <div className="px-4 sm:px-6 md:px-10 flex flex-col h-full flex-grow overflow-hidden">
+          <div className="bg-solidWhite w-full rounded-lg p-3 sm:p-5 grid grid-cols-5 sm:grid-cols-5 gap-3 sm:gap-0 items-center text-sm sm:text-lg">
+            <span className="font-semibold text-darkerGray text-left">
               Name
             </span>
-            <span className="font-semibold text-darkerGray text-left text-xl">
+            <span className="font-semibold text-darkerGray text-left">
               Product ID
             </span>
-            <span className="font-semibold text-darkerGray text-left text-xl">
+            <span className="font-semibold text-darkerGray text-left">
               Category
             </span>
-            <span className="font-semibold text-darkerGray text-left text-xl">
+            <span className="font-semibold text-darkerGray text-left">
               Price
             </span>
-            {/* <span className="font-semibold text-darkGray text-left">Image</span> */}
-            <span></span>
-            <span></span>
+            <span className="hidden sm:block"></span>
+            <span className="hidden sm:block"></span>
           </div>
 
-          <div className="flex flex-col overflow-y-scroll gap-3">
-            {products.map((item, index) => {
-              return (
-                <div
-                  className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-6 items-center"
-                  key={item.ProductID || index}
-                >
-                  <span>{item.ProductName || "N/A"}</span>
-                  <span>{item.ProductID || "N/A"}</span>
-                  <span>{item.CategoryName || "N/A"}</span>
-                  <span>₱{item.Price || "0.00"}</span>
-                  {/* <img
-                    src={productImage}
-                    className="w-20 h-20 rounded-lg drop-shadow-lg bg-white object-cover"
-                    alt={item.ProductName}
-                  /> */}
+          {/* ✅ Fix: Enable scrolling for long product lists */}
+          <div className="flex flex-col gap-3 overflow-auto max-h-[75vh] py-2">
+            {products.map((item, index) => (
+              <div
+                className="bg-solidWhite w-full rounded-lg p-5 grid grid-cols-5 items-center"
+                key={item.ProductID || index}
+              >
+                <span className=" truncate">{item.ProductName || "N/A"}</span>
+                <span className=" truncate md:text-left text-center">
+                  {item.ProductID || "N/A"}
+                </span>
+                <span className=" truncate">{item.CategoryName || "N/A"}</span>
+                <span className=" truncate">₱{item.Price || "0.00"}</span>
+                <div className="flex flex-col md:flex-row gap-2 justify-end items-center">
                   <PencilSimple
-                    size={32}
+                    size={20}
                     className="cursor-pointer"
                     onClick={() => handleEditClick(item)}
                     color="#4E76CD"
                   />
                   <TrashSimple
-                    size={32}
+                    size={20}
                     className="cursor-pointer"
                     onClick={() => handleDelete(item.ProductID)}
                     color="#9c0000"
                   />
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
       {selectedProduct && (
         <EditProductModal
           product={selectedProduct}

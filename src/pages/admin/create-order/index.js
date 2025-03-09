@@ -98,27 +98,6 @@ const CreateOrder = () => {
     ],
   };
 
-  const images = {
-    products: [
-      { id: 1, img: "/products/BiscoffCheesecake.jpg" },
-      { id: 2, img: "/products/Funfetti.jpg" },
-      { id: 3, img: "/products/MatchawithCreamCheese.jpg" },
-      { id: 4, img: "/products/NutellaBlast.jpg" },
-      { id: 5, img: "/products/OreoCheesecake.jpg" },
-      { id: 6, img: "/products/RockyRoad.jpg" },
-      { id: 7, img: "/products/Smores.jpg" },
-      { id: 8, img: "/products/SpecialCrinkles.jpg" },
-      { id: 9, img: "/products/Brownies.jpg" },
-      { id: 10, img: "/products/Butterscotch.jpg" },
-      { id: 11, img: "/products/RevelBars.jpg" },
-      { id: 12, img: "/products/RedVelvetCheesecake.jpg" },
-      { id: 13, img: "/products/HamandCheeseEmpanada.jpg" },
-      { id: 14, img: "/products/KoreanCreamCheeseGarlicBread.jpg" },
-      { id: 15, img: "/products/KoreanCreamCheeseGarlicBread.jpg" },
-      { id: 16, img: "/products/KoreanCreamCheeseGarlicBread.jpg" },
-    ],
-  };
-
   const addToCart = (product) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find(
@@ -145,102 +124,91 @@ const CreateOrder = () => {
   return (
     <Layout>
       <section className="h-full flex flex-col">
-        <div className="w-full flex justify-between items-center">
-          <h1 className="text-blueSerenity py-5">Hello, {username}</h1>
-          <div className="flex items-center relative">
+        <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <h1 className="text-blueSerenity py-2  text-right md:text-left w-full">
+            Hello, {username}
+          </h1>
+
+          <div className="flex items-center relative  w-full md:w-[44rem] ">
+            <MagnifyingGlass
+              size={24}
+              className="absolute left-3 text-darkGray"
+            />
             <input
-              className=" text-left pl-14"
+              className="w-full md:w-full pl-10 py-2 border rounded-md text-sm text-left text-black placeholder:text-darkGray"
               placeholder="Search by name or product number"
             />
-            <MagnifyingGlass size={32} className="absolute ml-3" />
           </div>
         </div>
 
-        <div className="flex gap-8 h-full overflow-y-hidden">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8 h-full overflow-y-auto md:overflow-y-hidden">
           <div className="bg-solidWhite flex rounded-lg shadow-lg p-5 max-h-full h-full flex-col overflow-y-scroll w-full">
             {/* Cookies Section  */}
             <div className="w-full">
               <h2>Cookies</h2>
-              <div className="flex gap-5 flex-wrap ">
-                {data.products
-                  .filter((item) => item.CategoryID === 1)
-                  .map((item) => {
-                    const productImage =
-                      images.products.find((img) => img.id === item.ProductID)
-                        ?.img || "";
 
-                    return (
-                      <div
-                        key={item.ProductID}
-                        className="cursor-pointer flex flex-col items-center w-32 h-32 border bg-arcLight hover:scale-110 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
-                        onClick={() => addToCart(item)}
-                      >
-                        <p className="text-center break-words mt-2 text-sm max-w-32 font-semibold">
-                          {item.ProductName}
-                        </p>
-                        <span className=" text-sm">
-                          P {item.Price.toFixed(2)}
-                        </span>
-                      </div>
-                    );
-                  })}
+              <div className="flex flex-wrap grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {data.products.map((item) => (
+                  <div
+                    key={item.ProductID}
+                    className="cursor-pointer flex flex-col items-center  max-w-[8rem] w-32 h-32 p-3 border bg-arcLight hover:scale-105 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
+                    onClick={() => addToCart(item)}
+                  >
+                    <p className="text-center text-xs sm:text-sm break-words font-semibold">
+                      {item.ProductName}
+                    </p>
+                    <span className="text-xs sm:text-sm">
+                      P {item.Price.toFixed(2)}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Bars Section */}
             <div className="w-full">
               <h2>Bars</h2>
-              <div className="flex gap-5 flex-wrap ">
-                {data.products
-                  .filter((item) => item.CategoryID === 2)
-                  .map((item) => {
-                    const productImage =
-                      images.products.find((img) => img.id === item.ProductID)
-                        ?.img || "/products/default.jpg";
-
-                    return (
-                      <div
-                        key={item.ProductID}
-                        className="cursor-pointer flex flex-col items-center w-32 h-32 border bg-arcLight hover:scale-110 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
-                        onClick={() => addToCart(item)}
-                      >
-                        <p className="text-center break-words mt-2 max-w-32 text-sm font-semibold">
-                          {item.ProductName}
-                        </p>
-                        <span className=" text-sm">
-                          P {item.Price.toFixed(2)}
-                        </span>
-                      </div>
-                    );
-                  })}
+              <div className="flex flex-wrap grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {data.products.map((item) => (
+                  <div
+                    key={item.ProductID}
+                    className="cursor-pointer flex flex-col items-center  max-w-[8rem] w-32 h-32 p-3 border bg-arcLight hover:scale-105 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
+                    onClick={() => addToCart(item)}
+                  >
+                    <p className="text-center text-xs sm:text-sm break-words font-semibold">
+                      {item.ProductName}
+                    </p>
+                    <span className="text-xs sm:text-sm">
+                      P {item.Price.toFixed(2)}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Bread Section */}
             <div className="w-full">
               <h2>Bread</h2>
-              <div className="flex gap-5 flex-wrap ">
-                {data.products.map((item) => {
-                  return (
-                    <div
-                      key={item.ProductID}
-                      className="cursor-pointer flex flex-col items-center w-32 h-32 border bg-arcLight hover:scale-110 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
-                      onClick={() => addToCart(item)}
-                    >
-                      <p className="text-center break-words mt-2 text-sm max-w-32 font-semibold">
-                        {item.ProductName}
-                      </p>
-                      <span className=" text-sm">
-                        P {item.Price.toFixed(2)}
-                      </span>
-                    </div>
-                  );
-                })}
+              <div className="flex flex-wrap grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {data.products.map((item) => (
+                  <div
+                    key={item.ProductID}
+                    className="cursor-pointer flex flex-col items-center  max-w-[8rem] w-32 h-32 p-3 border bg-arcLight hover:scale-105 transition-all duration-200 text-darkerGray shadow-lg rounded-lg justify-center gap-1"
+                    onClick={() => addToCart(item)}
+                  >
+                    <p className="text-center text-xs sm:text-sm break-words font-semibold">
+                      {item.ProductName}
+                    </p>
+                    <span className="text-xs sm:text-sm">
+                      P {item.Price.toFixed(2)}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="p-10 bg-solidWhite rounded-lg shadow-lg w-[35%] h-full flex flex-col">
+          <div className="p-6 sm:p-8 md:p-10 bg-solidWhite rounded-lg shadow-lg w-full sm:w-[80%] md:w-[50%] lg:w-[35%] h-full flex flex-col">
             <h2>Cart</h2>
             <Separator />
 

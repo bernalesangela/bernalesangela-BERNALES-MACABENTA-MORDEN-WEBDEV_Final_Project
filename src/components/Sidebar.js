@@ -88,12 +88,12 @@ const Sidebar = () => {
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-4 z-50 md:hidden bg-gray-200 p-2 rounded-full shadow-md transition-transform duration-300 w-fit"
+        className="fixed top-4 left-4 z-50 md:hidden bg-gray-200 p-2 rounded-full shadow-md transition-transform duration-300 w-fit justify-between"
       >
         {isOpen ? <X size={24} /> : <List size={24} />}
       </button>
       <section
-        className={`bg-solidWhite py-10 flex flex-col w-[15.125rem] transition-all duration-500 ease-in-out 
+        className={`bg-solidWhite py-10 flex flex-col w-[15.125rem] transition-all duration-500 ease-in-out  shadow-lg
       fixed top-0 left-0 z-40 h-screen max-h-screen overflow-hidden transform
       ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"} 
       md:relative md:translate-x-0 md:opacity-100 md:w-[15.125rem] md:h-screen`}

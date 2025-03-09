@@ -17,12 +17,14 @@ const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-5 rounded-lg shadow-lg">
-        <h2 className="text-xl mb-4">Edit Product</h2>
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center p-4">
+      <div className="bg-white w-full max-w-sm sm:max-w-md p-4 sm:p-5 rounded-lg shadow-lg">
+        <h2 className="text-lg sm:text-xl mb-4">Edit Product</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700">Product Name</label>
+            <label className="block text-gray-700 text-sm sm:text-base">
+              Product Name
+            </label>
             <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded"
@@ -31,7 +33,9 @@ const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Price</label>
+            <label className="block text-gray-700 text-sm sm:text-base">
+              Price
+            </label>
             <input
               type="number"
               step="0.01"
@@ -40,17 +44,17 @@ const EditProductModal = ({ product, isOpen, onClose, onSave }) => {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-          <div className="flex justify-end">
+          <div className="flex flex-col sm:flex-row justify-end gap-2">
             <button
               type="button"
-              className="mr-2 p-2 bg-gray-300 rounded text-darkerGray"
+              className="w-full sm:w-auto p-2 bg-gray-300 rounded text-darkerGray"
               onClick={onClose}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="p-2 bg-blue-500 text-white rounded"
+              className="w-full sm:w-auto p-2 bg-blue-500 text-white rounded"
             >
               Save
             </button>

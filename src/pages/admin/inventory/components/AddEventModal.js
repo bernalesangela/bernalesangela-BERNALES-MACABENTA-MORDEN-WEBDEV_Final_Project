@@ -35,46 +35,52 @@ const AddEventModal = ({ isOpen, onClose, onSave }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-      <div className="bg-white p-5 rounded-lg shadow-lg w-1/3">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+      <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-xl mb-4 text-center text-darkerGray">
           Add New Event
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block mb-2">Event Name</label>
+            <label className="block mb-2 text-sm sm:text-base">
+              Event Name
+            </label>
             <input
               type="text"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-sm sm:text-base"
               value={eventTitle}
               onChange={(e) => setEventTitle(e.target.value)}
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Start Date</label>
+            <label className="block mb-2 text-sm sm:text-base">
+              Start Date
+            </label>
             <input
               type="date"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-sm sm:text-base"
               value={scheduleStartDate}
               onChange={(e) => setScheduleStartDate(e.target.value)}
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">End Date</label>
+            <label className="block mb-2 text-sm sm:text-base">End Date</label>
             <input
               type="date"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-sm sm:text-base"
               value={scheduleEndDate}
               onChange={(e) => setScheduleEndDate(e.target.value)}
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Event Type</label>
+            <label className="block mb-2 text-sm sm:text-base">
+              Event Type
+            </label>
             <select
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-sm sm:text-base"
               value={eventTypeID}
               onChange={(e) => setEventTypeID(e.target.value)}
               required
@@ -87,17 +93,17 @@ const AddEventModal = ({ isOpen, onClose, onSave }) => {
               ))}
             </select>
           </div>
-          <div className="flex justify-end">
+          <div className="flex flex-wrap justify-center gap-2">
             <button
               type="button"
-              className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
+              className="bg-gray-500 text-white px-4 py-2 rounded text-sm sm:text-base"
               onClick={onClose}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-blue-500 text-white px-4 py-2 rounded text-sm sm:text-base"
             >
               Save
             </button>

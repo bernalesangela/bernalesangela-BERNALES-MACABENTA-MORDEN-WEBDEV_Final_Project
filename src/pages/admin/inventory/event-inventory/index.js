@@ -19,38 +19,38 @@ const EventInventoryPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    
-    const apiUrl = 'http://localhost:5000/api/stockin';
-    const stockOutUrl = 'http://localhost:5000/api/stockout';
-    const eventDetailsUrl = 'http://localhost:5000/api/eventdetails';
-    
+
+    const apiUrl = "http://localhost:5000/api/stockin";
+    const stockOutUrl = "http://localhost:5000/api/stockout";
+    const eventDetailsUrl = "http://localhost:5000/api/eventdetails";
+
     console.log(`Fetching data from: ${apiUrl}`);
-    
+
     fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        console.log('Fetched stock-in data:', data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched stock-in data:", data);
         setStockInData(data);
       })
-      .catch(error => console.error('Error fetching stock-in data:', error));
+      .catch((error) => console.error("Error fetching stock-in data:", error));
 
     fetch(stockOutUrl)
-      .then(response => response.json())
-      .then(data => {
-        console.log('Fetched stock-out data:', data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched stock-out data:", data);
         setStockOutData(data);
       })
-      .catch(error => console.error('Error fetching stock-out data:', error));
+      .catch((error) => console.error("Error fetching stock-out data:", error));
 
     fetch(eventDetailsUrl)
-      .then(response => response.json())
-      .then(data => {
-        console.log('Fetched event details:', data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched event details:", data);
         setEventDetails(data[0]); // Assuming you want the first event details
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching event details:', error);
+      .catch((error) => {
+        console.error("Error fetching event details:", error);
         setError(error.message);
         setLoading(false);
       });
@@ -62,9 +62,8 @@ const EventInventoryPage = () => {
       item?.StockID?.toString().includes(searchQuery)
   );
 
-  const filteredStockOuts = stockOutData.filter(
-    (item) =>
-      item?.ProductName?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredStockOuts = stockOutData.filter((item) =>
+    item?.ProductName?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -73,7 +72,7 @@ const EventInventoryPage = () => {
         <div className="w-full flex items-center gap-3">
           <div
             className="bg-lightGray p-1 rounded-full hover:scale-110 transition-all duration-150 hover:cursor-pointer"
-            onClick={() => navigate('/admin/inventory')}
+            onClick={() => navigate("/admin/inventory")}
           >
             <CaretLeft size={25} />
           </div>
@@ -93,7 +92,9 @@ const EventInventoryPage = () => {
               <span className="font-semibold text-darkerGray text-lg">
                 Staff Assigned
               </span>
-              <span className="text-darkGray">{eventDetails.StaffAssigned}</span>
+              <span className="text-darkGray">
+                {eventDetails.StaffAssigned}
+              </span>
             </div>
           </div>
 
@@ -109,13 +110,17 @@ const EventInventoryPage = () => {
               <span className="font-semibold text-darkerGray text-lg">
                 Date start
               </span>
-              <span className="text-darkGray">{new Date(eventDetails.ScheduleStartDate).toLocaleDateString()}</span>
+              <span className="text-darkGray">
+                {new Date(eventDetails.ScheduleStartDate).toLocaleDateString()}
+              </span>
             </div>
             <div className="w-full grid grid-cols-2 grid-row-">
               <span className="font-semibold text-darkerGray text-lg">
                 Date end
               </span>
-              <span className="text-darkGray">{new Date(eventDetails.ScheduleEndDate).toLocaleDateString()}</span>
+              <span className="text-darkGray">
+                {new Date(eventDetails.ScheduleEndDate).toLocaleDateString()}
+              </span>
             </div>
           </div>
         </div>
@@ -193,8 +198,12 @@ const EventInventoryPage = () => {
                       <span>{item.ProductName}</span>
                       <span>{item.Quantity}</span>
                       <span>{item.Quantity}</span>
-                      <span>{new Date(item.ExpiryDate).toLocaleDateString()}</span> {/* Format ExpiryDate */}
-                      <span>₱{parseFloat(item.Price).toFixed(2)}</span> {/* Ensure Price is a number */}
+                      <span>
+                        {new Date(item.ExpiryDate).toLocaleDateString()}
+                      </span>{" "}
+                      {/* Format ExpiryDate */}
+                      <span>₱{parseFloat(item.Price).toFixed(2)}</span>{" "}
+                      {/* Ensure Price is a number */}
                       <span>
                         <PencilSimple
                           size={24}
@@ -209,35 +218,37 @@ const EventInventoryPage = () => {
                   No results found
                 </div>
               )
+            ) : filteredStockOuts.length > 0 ? (
+              filteredStockOuts.map((item, index) => (
+                <div
+                  key={index}
+                  className={`w-full flex items-center justify-between p-5 ${
+                    index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                  }`}
+                >
+                  <div className="w-full grid grid-cols-6 text-lg text-darkerGray">
+                    <span>{item.ProductName}</span>
+                    <span>{item.NumberOfStocks}</span>
+                    <span>{item.AvailableStocks}</span>
+                    <span>
+                      {new Date(item.ExpiryDate).toLocaleDateString()}
+                    </span>{" "}
+                    {/* Format ExpiryDate */}
+                    <span>₱{parseFloat(item.Price).toFixed(2)}</span>{" "}
+                    {/* Ensure Price is a number */}
+                    <span>
+                      <PencilSimple
+                        size={24}
+                        className="text-blue-500 cursor-pointer"
+                      />
+                    </span>
+                  </div>
+                </div>
+              ))
             ) : (
-              filteredStockOuts.length > 0 ? (
-                filteredStockOuts.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`w-full flex items-center justify-between p-5 ${
-                      index % 2 === 0 ? "bg-gray-100" : "bg-white"
-                    }`}
-                  >
-                    <div className="w-full grid grid-cols-6 text-lg text-darkerGray">
-                      <span>{item.ProductName}</span>
-                      <span>{item.NumberOfStocks}</span>
-                      <span>{item.AvailableStocks}</span>
-                      <span>{new Date(item.ExpiryDate).toLocaleDateString()}</span> {/* Format ExpiryDate */}
-                      <span>₱{parseFloat(item.Price).toFixed(2)}</span> {/* Ensure Price is a number */}
-                      <span>
-                        <PencilSimple
-                          size={24}
-                          className="text-blue-500 cursor-pointer"
-                        />
-                      </span>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="text-center py-5 text-darkGray">
-                  No results found
-                </div>
-              )
+              <div className="text-center py-5 text-darkGray">
+                No results found
+              </div>
             )}
           </div>
           <div className="flex items-center w-full gap-3 py-5">

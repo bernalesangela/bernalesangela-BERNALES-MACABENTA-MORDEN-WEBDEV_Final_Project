@@ -291,12 +291,15 @@ const SalesTrackingPage = () => {
       )}
 
       {/* --------------------------- */}
-      <section className="h-full flex flex-col gap-5">
-        <div className="w-full flex items-center gap-3">
-          <h1 className="text-blueSerenity py-5">Sales Tracking</h1>
+      <section className="h-full flex flex-col gap-5 overflow-y-hidden">
+        <div className="w-full flex items-center gap-3 ">
+          <h1 className="text-blueSerenity py-5 text-lg sm:text-xl text-right w-full">
+            {" "}
+            Sales Tracking
+          </h1>
         </div>
 
-        <div className="flex items-center justify-around  gap-10">
+        <div className="flex flex-col md:flex-row items-center justify-center md:justify-around gap-3 md:gap-5 w-full">
           {/* Sales Summary Items */}
           {[
             {
@@ -349,28 +352,31 @@ const SalesTrackingPage = () => {
           <div className="flex items-center">
             <input
               type="date"
-              className="flex items-center gap-2 bg-blueSerenity text-white px-4 rounded-lg shadow-md hover:scale-110 transition-all duration-300 w-fit uppercase "
+              className="flex items-center gap-2 bg-blueSerenity text-white px-4 rounded-lg shadow-md hover:scale-110 transition-all duration-300 w-fit uppercase"
             />
           </div>
         </div>
 
         <div className="w-full h-full overflow-y-scroll flex flex-col gap-3">
-          <div className=" w-full rounded-lg p-5 grid grid-cols-6 items-center">
-            <span className="font-semibold text-darkGray text-left">
+          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center">
+            <span className="font-semibold text-darkGray text-xs sm:text-sm md:text-base md:text-left text-center">
               Transaction ID
             </span>
-            <span className="font-semibold text-darkGray text-left">
+            <span className="font-semibold text-darkGray text-xs sm:text-sm md:text-base md:text-left text-center">
               Employee ID
             </span>
-            <span className="font-semibold text-darkGray text-left">Date</span>
-            <span className="font-semibold text-darkGray text-left">Time</span>
-            <span className="font-semibold text-darkGray text-left">
+            <span className="font-semibold text-darkGray text-xs sm:text-sm md:text-base text-left">
+              Date
+            </span>
+            <span className="font-semibold text-darkGray text-xs sm:text-sm md:text-base text-left">
+              Time
+            </span>
+            <span className="font-semibold text-darkGray text-xs sm:text-sm md:text-base text-left">
               Subtotal
             </span>
-            <span></span>
           </div>
 
-          <div className="w-full h-full overflow-y-scroll flex flex-col gap-3">
+          <div className="w-full h-full overflow-y-scroll flex flex-col gap-3 ">
             {filteredSales.length > 0 ? (
               filteredSales.map((sale) => (
                 <div

@@ -18,7 +18,9 @@ const Dashboard = () => {
   return (
     <Layout>
       <section className="h-full flex flex-col overflow-y-scroll">
-        <h1 className="text-blueSerenity py-5">Hello, Angela{username}</h1>
+        <h1 className="text-blueSerenity py-2 text-lg md:text-xl text-right md:text-left w-full">
+          Hello, {username}
+        </h1>
         <div className="flex flex-col flex-1 gap-8 overflow-hidden">
           <SalesSummary />
           <div className="flex w-full flex-col md:flex-row gap-4 md:gap-8 flex-1">
