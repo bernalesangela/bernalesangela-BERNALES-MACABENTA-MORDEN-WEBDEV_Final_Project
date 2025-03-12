@@ -13,6 +13,8 @@ import { LoginPage } from "./pages/login";
 import EventInventoryPage from "./pages/admin/inventory/event-inventory";
 import SalesTrackingPage from "./pages/admin/sales-tracking";
 import CheckoutPage from "./pages/admin/create-order/checkout";
+import EmployeePage from "./pages/admin/employees";
+import RegisterEmployee from "./pages/admin/employees/register";
 
 function App() {
   return (
@@ -30,6 +32,11 @@ function App() {
         />
         <Route path="/admin/products/new-product" element={<NewProduct />} />
         <Route path="/admin/sales-tracking" element={<SalesTrackingPage />} />
+        <Route path="/admin/employees" element={<EmployeePage />} />
+        <Route
+          path="/admin/employees/register"
+          element={<RegisterEmployee />}
+        />
         <Route path="/login/" element={<LoginPage />} />
       </Routes>
     </Router>
