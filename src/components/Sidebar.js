@@ -71,7 +71,7 @@ const Sidebar = () => {
       // },
       about: {
         text: "About",
-        redirect: "/about",
+        redirect: "/admin/about",
         icon: <Info size={25} weight="light" />,
       },
       logout: {
@@ -92,7 +92,7 @@ const Sidebar = () => {
       >
         {isOpen ? <X size={24} /> : <List size={24} />}
       </button>
-      <section
+      <div
         className={`bg-solidWhite py-10 flex flex-col w-[15.125rem] transition-all duration-500 ease-in-out  shadow-lg
       fixed top-0 left-0 z-40 h-screen max-h-screen overflow-hidden transform
       ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"} 
@@ -157,7 +157,7 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
