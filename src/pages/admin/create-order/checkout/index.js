@@ -61,10 +61,7 @@ const CheckoutPage = () => {
       )}
       <section className="h-full flex flex-col">
         <div className="w-full flex items-center gap-3">
-          <div
-            className="bg-lightGray p-1 rounded-full hover:scale-110 transition-all duration-150 hover:cursor-pointer"
-            // onClick={() => navigate("/admin/inventory")}
-          >
+          <div className="bg-lightGray p-1 rounded-full hover:scale-110 transition-all duration-150 hover:cursor-pointer">
             <CaretLeft size={25} />
           </div>
           <h1 className="text-blueSerenity py-5">Checkout</h1>

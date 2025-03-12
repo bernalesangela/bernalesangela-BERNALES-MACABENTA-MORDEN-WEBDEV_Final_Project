@@ -22,44 +22,66 @@ const RegisterEmployee = () => {
           className="bg-solidWhite flex rounded-lg shadow-lg p-10 h-full flex-col gap-5 last:justify-end"
         >
           <div className="w-full flex flex-col gap-1">
-            <label>Product Name</label>
+            <label>Full Name</label>
             <input
               placeholder="Enter product name"
               className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
-              //   value={productName}
-              //   onChange={(e) => setProductName(e.target.value)}
               required
             />
           </div>
-          <div className="w-full flex flex-col">
-            <label>Category</label>
-            <select
-              className="w-full text-left pl-3 placeholder:text-lunarGray"
-              //   value={category}
-              //   onChange={(e) => setCategory(e.target.value)}
-              required
-            >
-              <option value="">Select category</option>
-              <option value="Cookies">Cookies</option>
-              <option value="Bars">Bars</option>
-              <option value="Breads">Breads</option>
-            </select>
-          </div>
-          <div className="w-full flex flex-col">
-            <label>Product Price</label>
+
+          <div className="w-full flex flex-col gap-1">
+            <label>Role</label>
             <input
-              type="number"
-              step="0.01"
-              placeholder="Enter price"
+              placeholder="Enter product name"
               className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
-              //   value={price}
-              //   onChange={(e) => setPrice(e.target.value)}
-              onInput={(e) => {
-                e.currentTarget.value = e.currentTarget.value.replace(
-                  /[^0-9]/g,
-                  ""
-                );
-              }}
+              required
+            />
+          </div>
+
+          <div className="flex items-center w-full gap-5">
+            <div className="w-full flex flex-col gap-1">
+              <label>Age</label>
+              <input
+                placeholder="Enter product name"
+                className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
+                required
+              />
+            </div>
+
+            <div className="w-full flex flex-col gap-1">
+              <label>Gender</label>
+              <input
+                placeholder="Enter product name"
+                className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="w-full flex flex-col gap-1">
+            <label>Number</label>
+            <input
+              placeholder="Enter product name"
+              className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
+              required
+            />
+          </div>
+
+          <div className="w-full flex flex-col gap-1">
+            <label>Email</label>
+            <input
+              placeholder="Enter product name"
+              className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
+              required
+            />
+          </div>
+
+          <div className="w-full flex flex-col gap-1">
+            <label>Address</label>
+            <input
+              placeholder="Enter product name"
+              className="w-full text-left pl-3 text-black placeholder:text-lunarGray"
               required
             />
           </div>

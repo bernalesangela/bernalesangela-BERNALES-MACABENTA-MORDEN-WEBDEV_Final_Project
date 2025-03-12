@@ -71,7 +71,7 @@ const Sidebar = () => {
       // },
       about: {
         text: "About",
-        redirect: "",
+        redirect: "/about",
         icon: <Info size={25} weight="light" />,
       },
       logout: {
