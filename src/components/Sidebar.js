@@ -98,7 +98,7 @@ const Sidebar = () => {
       ${isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"} 
       md:relative md:translate-x-0 md:opacity-100 md:w-[15.125rem] md:h-screen`}
       >
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col h-full justify-between">
           {/* Top Part */}
           <div className="flex flex-col">
             <img src={logo} alt="logo" />
@@ -139,7 +139,13 @@ const Sidebar = () => {
               {Object.entries(sidebarContent.controls).map(([key, value]) => (
                 <div
                   key={key}
-                  onClick={key === "logout" ? value.action : undefined}
+                  onClick={() => {
+                    if (key === "logout") {
+                      value.action(); // Call logout action
+                    } else if (value.redirect) {
+                      navigate(value.redirect); // Navigate to redirect path
+                    }
+                  }}
                   className="flex items-center gap-4 rounded-lg px-4 py-2 text-slate-700 transition-colors duration-300 hover:cursor-pointer hover:bg-arcLight"
                 >
                   {value.icon}

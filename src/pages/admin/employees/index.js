@@ -42,7 +42,7 @@ const EmployeePage = () => {
           </div>
         </div>
 
-        <div className="w-full h-full overflow-y-scroll flex flex-col gap-3">
+        <div className="w-full h-full overflow-hidden flex flex-col gap-3">
           <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center">
             <span className="font-semibold text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
               Employee ID
@@ -61,308 +61,310 @@ const EmployeePage = () => {
             </span>
           </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+          <div className="h-full overflow-y-scroll flex flex-col gap-3">
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              Jane Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
-          </div>
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                Jane Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
 
-          <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              #000000
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
-              John Doe
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              Cashier
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              0999999999
-            </span>
-            <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
-              example@email.com
-            </span>
-            <CaretRight size={25} />
+            <div className="w-full rounded-lg p-5 grid grid-cols-5 md:grid-cols-6 items-center bg-solidWhite">
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                #000000
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base md:text-left text-center">
+                John Doe
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                Cashier
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                0999999999
+              </span>
+              <span className="text-darkGray text-lg sm:text-sm md:text-base text-left">
+                example@email.com
+              </span>
+              <CaretRight size={25} />
+            </div>
           </div>
         </div>
       </section>
